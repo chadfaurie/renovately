@@ -4,6 +4,13 @@ import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
 import { BrowserRouter, Route } from "react-router-dom";
 import { dataProvider } from "./dataProvider";
 import { authProvider } from "./authProvider";
+import Dashboard from "./dashboard";
+import {
+  PropertyList,
+  PropertyEdit,
+  PropertyShow,
+  PropertyCreate,
+} from "./resources/Property";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -11,7 +18,7 @@ export const MyAdmin = () => (
       dataProvider={dataProvider}
       authProvider={authProvider}
       loginPage={LoginPage}
-      dashboard={() => <></>}
+      dashboard={Dashboard}
     >
       <CustomRoutes noLayout>
         <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />
@@ -21,7 +28,13 @@ export const MyAdmin = () => (
         />
       </CustomRoutes>
 
-      <Resource name="property" list={ListGuesser} />
+      <Resource
+        name="property"
+        list={PropertyList}
+        show={PropertyShow}
+        edit={PropertyEdit}
+        create={PropertyCreate}
+      />
       <Resource name="project" list={ListGuesser} />
     </Admin>
   </BrowserRouter>
