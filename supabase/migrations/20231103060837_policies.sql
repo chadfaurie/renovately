@@ -20,3 +20,7 @@ select to public using (true);
 -- Partner Project Link
 create policy "Enable read access for all users" on "public"."partner_project_link" as permissive for
 select to public using (true);
+-- 
+-- Tasks
+create policy "Enable read access for all users" on "public"."task" as permissive for
+select to public using (true);

@@ -8,5 +8,9 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "scripts": {
+    "app:gen:types": "npx supabase gen types typescript --local > packages/renovately-app/database.types.ts",
+    "db:dump:seed": "npx supabase db dump --local -f supabase/seed.sql --data-only"
+  }
 }

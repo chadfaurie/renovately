@@ -80,3 +80,24 @@ alter table "public"."partner_project_link" validate constraint "partner_project
 alter table "public"."partner_project_link"
 add constraint "partner_project_link_partner_id_fkey" FOREIGN KEY (partner_id) REFERENCES partner(id) not valid;
 alter table "public"."partner_project_link" validate constraint "partner_project_link_partner_id_fkey";
+-- 
+-- Tasks
+create table "public"."task" (
+    "id" uuid not null default gen_random_uuid(),
+    "created_at" timestamp with time zone not null default now(),
+    "description" text,
+    "to_be_completed_by" uuid,
+    "status" character varying,
+    "priority" integer,
+    "project_id" uuid
+);
+alter table "public"."task" enable row level security;
+CREATE UNIQUE INDEX task_pkey ON public.task USING btree (id);
+alter table "public"."task"
+add constraint "task_pkey" PRIMARY KEY using index "task_pkey";
+alter table "public"."task"
+add constraint "task_project_id_fkey" FOREIGN KEY (project_id) REFERENCES project(id) not valid;
+alter table "public"."task" validate constraint "task_project_id_fkey";
+alter table "public"."task"
+add constraint "task_to_be_completed_by_fkey" FOREIGN KEY (to_be_completed_by) REFERENCES partner(id) not valid;
+alter table "public"."task" validate constraint "task_to_be_completed_by_fkey";
