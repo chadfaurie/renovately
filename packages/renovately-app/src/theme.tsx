@@ -2,7 +2,7 @@ import { nanoLightTheme } from "react-admin";
 import { Theme } from "@mui/material";
 import merge from "lodash.merge";
 
-export const theme: Theme = merge(nanoLightTheme, {
+const overrides: Partial<Theme> = {
   components: {
     MuiInput: {
       defaultProps: {
@@ -14,5 +14,12 @@ export const theme: Theme = merge(nanoLightTheme, {
         fullWidth: true,
       },
     },
+    MuiChip: {
+      defaultProps: {
+        size: "small",
+      },
+    },
   },
-});
+};
+
+export const theme: Theme = merge(nanoLightTheme, overrides);

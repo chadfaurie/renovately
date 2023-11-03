@@ -18,6 +18,12 @@ import {
   ProjectShow,
 } from "./resources/Project";
 import { theme } from "./theme";
+import {
+  PartnerCreate,
+  PartnerEdit,
+  PartnerList,
+  PartnerShow,
+} from "./resources/Partner";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -49,6 +55,13 @@ export const MyAdmin = () => (
         show={ProjectShow}
         edit={ProjectEdit}
         create={ProjectCreate}
+      />
+      <Resource
+        name="partner"
+        list={PartnerList}
+        show={PartnerShow}
+        edit={PartnerEdit}
+        create={PartnerCreate}
       />
     </Admin>
   </BrowserRouter>
