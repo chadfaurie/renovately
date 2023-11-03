@@ -15,21 +15,6 @@ alter table "public"."user_profile"
 add constraint "user_profile_id_fkey" FOREIGN KEY (id) REFERENCES auth.users(id) not valid;
 alter table "public"."user_profile" validate constraint "user_profile_id_fkey";
 -- 
--- projects
-create table "public"."project" (
-    "id" uuid not null default gen_random_uuid(),
-    "created_at" timestamp with time zone not null default now(),
-    "title" character varying not null,
-    "description" text,
-    "start_date" date,
-    "estimated_end_date" date,
-    "status" character varying not null
-);
-alter table "public"."project" enable row level security;
-CREATE UNIQUE INDEX "project_pkey" ON public."project" USING btree (id);
-alter table "public"."project"
-add constraint "project_pkey" PRIMARY KEY using index "project_pkey";
--- 
 -- Properties
 create table "public"."property" (
     "id" uuid not null default gen_random_uuid(),
@@ -43,6 +28,25 @@ alter table "public"."property" enable row level security;
 CREATE UNIQUE INDEX "property_pkey" ON public."property" USING btree (id);
 alter table "public"."property"
 add constraint "property_pkey" PRIMARY KEY using index "property_pkey";
+-- 
+-- projects
+create table "public"."project" (
+    "id" uuid not null default gen_random_uuid(),
+    "created_at" timestamp with time zone not null default now(),
+    "title" character varying not null,
+    "description" text,
+    "start_date" date,
+    "estimated_end_date" date,
+    "status" character varying not null,
+    "property_id" uuid NOT NULL
+);
+alter table "public"."project" enable row level security;
+CREATE UNIQUE INDEX "project_pkey" ON public."project" USING btree (id);
+alter table "public"."project"
+add constraint "project_pkey" PRIMARY KEY using index "project_pkey";
+alter table "public"."project"
+add constraint "project_property_id_fkey" FOREIGN KEY (property_id) REFERENCES property(id) not valid;
+alter table "public"."project" validate constraint "project_property_id_fkey";
 -- 
 -- Supplier
 create table "public"."partner" (

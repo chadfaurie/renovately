@@ -12,3 +12,11 @@ select to public using (true);
 -- Property
 create policy "Enable read access for all users" on "public"."property" as permissive for
 select to public using (true);
+-- 
+-- Partner
+create policy "Enable read access for all users" on "public"."partner" as permissive for
+select to public using (true);
+-- 
+-- Partner Project Link
+create policy "Enable read access for all users" on "public"."partner_project_link" as permissive for
+select to public using (true);
