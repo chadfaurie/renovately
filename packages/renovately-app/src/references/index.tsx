@@ -20,3 +20,11 @@ export const ProjectReferenceField = (props: RefFieldProps) => {
     </ReferenceField>
   );
 };
+
+export const PartnerReferenceField = (props: RefFieldProps) => {
+  return (
+    <ReferenceField reference="partner" {...props}>
+      <TextField source="name" />
+    </ReferenceField>
+  );
+};
