@@ -1,5 +1,5 @@
 // in App.js
-import { Admin, CustomRoutes, Resource, ListGuesser } from "react-admin";
+import { Admin, CustomRoutes, Resource } from "react-admin";
 import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
 import { BrowserRouter, Route } from "react-router-dom";
 import { dataProvider } from "./dataProvider";
@@ -11,6 +11,12 @@ import {
   PropertyShow,
   PropertyCreate,
 } from "./resources/Property";
+import {
+  ProjectCreate,
+  ProjectEdit,
+  ProjectList,
+  ProjectShow,
+} from "./resources/Project";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -35,7 +41,13 @@ export const MyAdmin = () => (
         edit={PropertyEdit}
         create={PropertyCreate}
       />
-      <Resource name="project" list={ListGuesser} />
+      <Resource
+        name="project"
+        list={ProjectList}
+        show={ProjectShow}
+        edit={ProjectEdit}
+        create={ProjectCreate}
+      />
     </Admin>
   </BrowserRouter>
 );
