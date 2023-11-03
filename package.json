@@ -1,0 +1,12 @@
+{
+  "name": "renovately",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Renovately/App.git",
+  "author": "Chad Faurie <chad@bluetrino.com>",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
+}
