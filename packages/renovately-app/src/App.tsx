@@ -17,6 +17,7 @@ import {
   ProjectList,
   ProjectShow,
 } from "./resources/Project";
+import { theme } from "./theme";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -25,6 +26,7 @@ export const MyAdmin = () => (
       authProvider={authProvider}
       loginPage={LoginPage}
       dashboard={Dashboard}
+      theme={theme}
     >
       <CustomRoutes noLayout>
         <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />

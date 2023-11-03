@@ -12,12 +12,14 @@
   "dependencies": {
     "@raphiniert/ra-data-postgrest": "2.0.0-alpha.0",
     "@supabase/supabase-js": "^2.38.4",
+    "lodash.merge": "^4.6.2",
     "ra-supabase": "^2.0.4",
     "react": "^18.2.0",
     "react-admin": "^4.15.2",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/lodash.merge": "^4.6.8",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
