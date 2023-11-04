@@ -1,5 +1,5 @@
-import { ReferenceField, Show, SimpleShowLayout, TextField } from "react-admin";
-import { PartnerReferenceField } from "../../references";
+import { Show, SimpleShowLayout, TextField } from "react-admin";
+import { PartnerReferenceField, ProjectReferenceField } from "../../references";
 
 export const TaskShow = () => (
   <Show>
@@ -8,7 +8,7 @@ export const TaskShow = () => (
       <PartnerReferenceField source="to_be_completed_by" />
       <TextField source="status" />
       <TextField source="priority" />
-      <ReferenceField source="project_id" reference="projects" />
+      <ProjectReferenceField source="project_id" />
     </SimpleShowLayout>
   </Show>
 );

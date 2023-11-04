@@ -14,6 +14,15 @@ add constraint "user_profile_pkey" PRIMARY KEY using index "user_profile_pkey";
 alter table "public"."user_profile"
 add constraint "user_profile_id_fkey" FOREIGN KEY (id) REFERENCES auth.users(id) not valid;
 alter table "public"."user_profile" validate constraint "user_profile_id_fkey";
+--
+-- Roles
+CREATE TYPE user_role AS ENUM (
+    'admin',
+    'manager',
+    'contractor',
+    'supplier',
+    'user'
+);
 -- 
 -- Properties
 create table "public"."property" (
@@ -127,3 +136,69 @@ alter table "public"."task" validate constraint "task_project_id_fkey";
 alter table "public"."task"
 add constraint "task_to_be_completed_by_fkey" FOREIGN KEY (to_be_completed_by) REFERENCES partner(id) not valid;
 alter table "public"."task" validate constraint "task_to_be_completed_by_fkey";
+-- 
+-- User Project Role Link
+CREATE TABLE "public"."user_project_role_link" (
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "user_id" uuid NOT NULL,
+    "project_id" uuid NOT NULL,
+    "role" user_role NOT NULL,
+    CONSTRAINT "user_project_role_link_pkey" PRIMARY KEY ("id")
+);
+-- Enable row-level security if necessary
+ALTER TABLE "public"."user_project_role_link" ENABLE ROW LEVEL SECURITY;
+-- Create the foreign key constraints
+ALTER TABLE "public"."user_project_role_link"
+ADD CONSTRAINT "user_project_role_link_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."user_profile"("id");
+ALTER TABLE "public"."user_project_role_link"
+ADD CONSTRAINT "user_project_role_link_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "public"."project"("id");
+-- 
+-- User Property Role Link
+CREATE TABLE "public"."user_property_role_link" (
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "user_id" uuid NOT NULL,
+    "property_id" uuid NOT NULL,
+    "role" user_role NOT NULL,
+    CONSTRAINT "user_property_role_link_pkey" PRIMARY KEY ("id")
+);
+-- Enable row-level security if necessary
+ALTER TABLE "public"."user_property_role_link" ENABLE ROW LEVEL SECURITY;
+-- Create the foreign key constraints
+ALTER TABLE "public"."user_property_role_link"
+ADD CONSTRAINT "user_property_role_link_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."user_profile"("id");
+ALTER TABLE "public"."user_property_role_link"
+ADD CONSTRAINT "user_property_role_link_property_id_fkey" FOREIGN KEY ("property_id") REFERENCES "public"."property"("id");
+-- 
+-- Progress Updates
+CREATE TYPE update_type AS ENUM ('project', 'task', 'room');
+CREATE TABLE "public"."progress_updates" (
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "update_description" text NOT NULL,
+    "entity_type" character varying NOT NULL,
+    "related_entity_id" uuid NOT NULL,
+    -- This could be project, task, or room ID
+    "update_type" update_type,
+    -- Enum: 'Project', 'Task', 'Room'
+    "uploaded_by" uuid NOT NULL -- ID of the user uploading the update
+);
+ALTER TABLE "public"."progress_updates" ENABLE ROW LEVEL SECURITY;
+CREATE UNIQUE INDEX progress_updates_pkey ON public.progress_updates USING btree (id);
+ALTER TABLE "public"."progress_updates"
+ADD CONSTRAINT "progress_updates_pkey" PRIMARY KEY USING INDEX "progress_updates_pkey";
+-- 
+-- Images
+CREATE TABLE "public"."progress_update_images" (
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "image_url" text NOT NULL,
+    "progress_update_id" uuid NOT NULL -- ID of the progress update
+);
+ALTER TABLE "public"."progress_update_images" ENABLE ROW LEVEL SECURITY;
+CREATE UNIQUE INDEX progress_update_images_pkey ON public.progress_update_images USING btree (id);
+ALTER TABLE "public"."progress_update_images"
+ADD CONSTRAINT "progress_update_images_pkey" PRIMARY KEY USING INDEX "progress_update_images_pkey";
+ALTER TABLE "public"."progress_update_images"
+ADD CONSTRAINT "progress_update_images_progress_update_id_fkey" FOREIGN KEY (progress_update_id) REFERENCES progress_updates(id);

@@ -1,14 +1,14 @@
-import { Datagrid, List, ReferenceField, TextField } from "react-admin";
-import { PartnerReferenceField } from "../../references";
+import { Datagrid, List, TextField } from "react-admin";
+import { PartnerReferenceField, ProjectReferenceField } from "../../references";
 
 export const TaskList = () => (
   <List>
-    <Datagrid rowClick="edit">
+    <Datagrid rowClick="show">
       <TextField source="description" />
       <PartnerReferenceField source="to_be_completed_by" />
       <TextField source="status" />
       <TextField source="priority" />
-      <ReferenceField source="project_id" reference="projects" />
+      <ProjectReferenceField source="project_id" />
     </Datagrid>
   </List>
 );

@@ -7,7 +7,7 @@ export type RefFieldProps = Partial<ComponentProps<typeof ReferenceField>> & {
 
 export const PropertyReferenceField = (props: RefFieldProps) => {
   return (
-    <ReferenceField reference="property" {...props}>
+    <ReferenceField reference="property" link="show" {...props}>
       <TextField source="address" />
     </ReferenceField>
   );
@@ -15,7 +15,7 @@ export const PropertyReferenceField = (props: RefFieldProps) => {
 
 export const ProjectReferenceField = (props: RefFieldProps) => {
   return (
-    <ReferenceField reference="project" {...props}>
+    <ReferenceField reference="project" link="show" {...props}>
       <TextField source="title" />
     </ReferenceField>
   );
@@ -23,7 +23,7 @@ export const ProjectReferenceField = (props: RefFieldProps) => {
 
 export const PartnerReferenceField = (props: RefFieldProps) => {
   return (
-    <ReferenceField reference="partner" {...props}>
+    <ReferenceField reference="partner" link="show" {...props}>
       <TextField source="name" />
     </ReferenceField>
   );

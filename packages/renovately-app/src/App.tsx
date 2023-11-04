@@ -26,6 +26,12 @@ import {
 } from "./resources/Partner";
 import { TaskCreate, TaskEdit, TaskList, TaskShow } from "./resources/Task";
 import { AreaCreate, AreaEdit, AreaList, AreaShow } from "./resources/Area";
+import {
+  UserProfileCreate,
+  UserProfileEdit,
+  UserProfileList,
+  UserProfileShow,
+} from "./resources/Users";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -78,6 +84,14 @@ export const MyAdmin = () => (
         show={AreaShow}
         edit={AreaEdit}
         create={AreaCreate}
+      />
+      {/* User Management */}
+      <Resource
+        name="user_profile"
+        list={UserProfileList}
+        show={UserProfileShow}
+        edit={UserProfileEdit}
+        create={UserProfileCreate}
       />
     </Admin>
   </BrowserRouter>

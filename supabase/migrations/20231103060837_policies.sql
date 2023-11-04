@@ -24,3 +24,11 @@ select to public using (true);
 -- Tasks
 create policy "Enable read access for all users" on "public"."task" as permissive for
 select to public using (true);
+-- 
+-- User Project Role Link
+create policy "Enable read access for all users" on "public"."user_project_role_link" as permissive for
+select to public using (true);
+-- 
+-- User Property Role Link
+create policy "Enable read access for all users" on "public"."user_property_role_link" as permissive for
+select to public using (true);

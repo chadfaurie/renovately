@@ -341,6 +341,63 @@ VALUES (
 --
 
 --
+-- Data for Name: property; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."property" (
+		"id",
+		"created_at",
+		"nickname",
+		"address",
+		"ownership_type",
+		"access_restrictions"
+	)
+VALUES (
+		'94f88ea5-2347-4eb3-a8e5-5a63b56053b5',
+		'2023-11-02 13:17:58.241153+00',
+		'Home',
+		'15c indian road',
+		'Owner',
+		'None'
+	);
+--
+-- Data for Name: area; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."area" (
+		"id",
+		"created_at",
+		"property_id",
+		"area_name",
+		"area_type",
+		"area_dimensions",
+		"area_description",
+		"renovation_status",
+		"renovation_requirements",
+		"before_images",
+		"after_images",
+		"current_condition",
+		"desired_features",
+		"materials_needed"
+	)
+VALUES (
+		'9c4d5215-7c43-4531-86a7-5d889c1ecb86',
+		'2023-11-04 05:03:27.289373+00',
+		'94f88ea5-2347-4eb3-a8e5-5a63b56053b5',
+		'Main Bathroom',
+		'BATHROOM',
+		'4x8',
+		'Bathroom en Suite',
+		NULL,
+		'Replace Tiles
+Install new Mirrors',
+		NULL,
+		NULL,
+		'GOOD',
+		NULL,
+		NULL
+	);
+--
 -- Data for Name: partner; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -364,26 +421,6 @@ VALUES (
 		'Tiles and stuff',
 		NULL,
 		'SUPPLIER'
-	);
---
--- Data for Name: property; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-INSERT INTO "public"."property" (
-		"id",
-		"created_at",
-		"nickname",
-		"address",
-		"ownership_type",
-		"access_restrictions"
-	)
-VALUES (
-		'94f88ea5-2347-4eb3-a8e5-5a63b56053b5',
-		'2023-11-02 13:17:58.241153+00',
-		'Home',
-		'15c indian road',
-		'Owner',
-		'None'
 	);
 --
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -451,6 +488,10 @@ VALUES (
 		'Admin',
 		NULL
 	);
+--
+-- Data for Name: user_roles; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
 --
 -- Data for Name: buckets; Type: TABLE DATA; Schema: storage; Owner: supabase_storage_admin
 --
