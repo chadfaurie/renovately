@@ -1,3 +1,23 @@
+-- Audit Trail Table
+CREATE TABLE "public"."audit_trail" (
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "timestamp" timestamp with time zone NOT NULL DEFAULT now(),
+    "user_id" uuid,
+    "action" character varying NOT NULL,
+    "entity" character varying NOT NULL,
+    "entity_id" uuid NOT NULL,
+    "old_data" jsonb,
+    "new_data" jsonb,
+    CONSTRAINT "audit_trail_pkey" PRIMARY KEY ("id")
+);
+-- Enable row-level security if necessary
+ALTER TABLE "public"."audit_trail" ENABLE ROW LEVEL SECURITY;
+-- Create the foreign key constraint for user_id if needed
+ALTER TABLE "public"."audit_trail"
+ADD CONSTRAINT "audit_trail_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES auth.users(id) not valid;
+-- Index for user_id and entity_id could be beneficial for performance
+CREATE INDEX "audit_trail_user_id_idx" ON "public"."audit_trail" USING btree ("user_id");
+CREATE INDEX "audit_trail_entity_id_idx" ON "public"."audit_trail" USING btree ("entity_id");
 -- 
 -- Users
 create table "public"."user_profile" (
