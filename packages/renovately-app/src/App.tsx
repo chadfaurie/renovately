@@ -25,6 +25,7 @@ import {
   PartnerShow,
 } from "./resources/Partner";
 import { TaskCreate, TaskEdit, TaskList, TaskShow } from "./resources/Task";
+import { AreaCreate, AreaEdit, AreaList, AreaShow } from "./resources/Area";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -70,6 +71,13 @@ export const MyAdmin = () => (
         show={TaskShow}
         edit={TaskEdit}
         create={TaskCreate}
+      />
+      <Resource
+        name="area"
+        list={AreaList}
+        show={AreaShow}
+        edit={AreaEdit}
+        create={AreaCreate}
       />
     </Admin>
   </BrowserRouter>

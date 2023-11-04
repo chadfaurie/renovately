@@ -29,6 +29,32 @@ CREATE UNIQUE INDEX "property_pkey" ON public."property" USING btree (id);
 alter table "public"."property"
 add constraint "property_pkey" PRIMARY KEY using index "property_pkey";
 -- 
+-- Areas
+CREATE TABLE "public"."area" (
+    "id" uuid NOT NULL DEFAULT gen_random_uuid(),
+    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "property_id" uuid NOT NULL,
+    "area_name" character varying NOT NULL,
+    "area_type" character varying NOT NULL,
+    "area_dimensions" text,
+    "area_description" text,
+    "renovation_status" character varying,
+    "renovation_requirements" text,
+    "before_images" text [],
+    -- Array of image URLs or IDs
+    "after_images" text [],
+    -- Array of image URLs or IDs
+    "current_condition" text,
+    "desired_features" text,
+    "materials_needed" text [] -- Array of material IDs or JSON
+);
+ALTER TABLE "public"."area" ENABLE ROW LEVEL SECURITY;
+CREATE UNIQUE INDEX area_pkey ON public.area USING btree (id);
+ALTER TABLE "public"."area"
+ADD CONSTRAINT "area_pkey" PRIMARY KEY USING INDEX "area_pkey";
+ALTER TABLE "public"."area"
+ADD CONSTRAINT "area_property_id_fkey" FOREIGN KEY (property_id) REFERENCES property(id);
+-- 
 -- projects
 create table "public"."project" (
     "id" uuid not null default gen_random_uuid(),
