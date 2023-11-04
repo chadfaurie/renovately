@@ -1,7 +1,7 @@
 import { Create, SimpleForm, TextInput } from "react-admin";
 
 export const PropertyCreate = () => (
-  <Create>
+  <Create redirect="show">
     <SimpleForm>
       <TextInput source="nickname" />
       <TextInput source="address" />

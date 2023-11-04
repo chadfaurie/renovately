@@ -2,7 +2,7 @@
 CREATE TABLE "public"."audit_trail" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "timestamp" timestamp with time zone NOT NULL DEFAULT now(),
-    "user_id" uuid,
+    "user_id" uuid NOT NULL default auth.uid(),
     "action" character varying NOT NULL,
     "entity" character varying NOT NULL,
     "entity_id" uuid NOT NULL,
@@ -38,6 +38,7 @@ alter table "public"."user_profile" validate constraint "user_profile_id_fkey";
 -- Roles
 CREATE TYPE user_role AS ENUM (
     'admin',
+    'owner',
     'manager',
     'contractor',
     'supplier',

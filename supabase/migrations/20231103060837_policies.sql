@@ -1,4 +1,8 @@
 -- 
+-- Audit Trails
+create policy "Enable insert for authenticated users only" on "public"."audit_trail" as permissive for
+insert to authenticated with check (true);
+-- 
 -- User Profile
 create policy "Enable insert for authenticated users only" on "public"."user_profile" as permissive for
 insert to authenticated with check (true);
@@ -12,6 +16,10 @@ select to public using (true);
 -- Property
 create policy "Enable read access for all users" on "public"."property" as permissive for
 select to public using (true);
+create policy "Enable insert for authenticated users only" on "public"."property" as permissive for
+insert to authenticated with check (true);
+create policy "Enable update for users based on email" on "public"."property" as permissive for
+update to public using (true) with check (true);
 -- 
 -- Partner
 create policy "Enable read access for all users" on "public"."partner" as permissive for
