@@ -197,12 +197,11 @@ CREATE TABLE "public"."progress_updates" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
     "update_description" text NOT NULL,
-    "entity_type" character varying NOT NULL,
     "related_entity_id" uuid NOT NULL,
     -- This could be project, task, or room ID
     "update_type" update_type,
     -- Enum: 'Project', 'Task', 'Room'
-    "uploaded_by" uuid NOT NULL -- ID of the user uploading the update
+    "uploaded_by" uuid -- ID of the user uploading the update
 );
 ALTER TABLE "public"."progress_updates" ENABLE ROW LEVEL SECURITY;
 CREATE UNIQUE INDEX progress_updates_pkey ON public.progress_updates USING btree (id);

@@ -32,6 +32,16 @@ import {
   UserProfileList,
   UserProfileShow,
 } from "./resources/Users";
+import {
+  ProgressUpdateCreate,
+  ProgressUpdateEdit,
+  ProgressUpdateList,
+  ProgressUpdateShow,
+} from "./resources/Progress";
+import {
+  ProgressUpdateImageCreate,
+  ProgressUpdateImageShow,
+} from "./resources/ProgressImages";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -84,6 +94,18 @@ export const MyAdmin = () => (
         show={AreaShow}
         edit={AreaEdit}
         create={AreaCreate}
+      />
+      <Resource
+        name="progress_updates"
+        list={ProgressUpdateList}
+        show={ProgressUpdateShow}
+        edit={ProgressUpdateEdit}
+        create={ProgressUpdateCreate}
+      />
+      <Resource
+        name="progress_update_images"
+        show={ProgressUpdateImageShow}
+        create={ProgressUpdateImageCreate}
       />
       {/* User Management */}
       <Resource
