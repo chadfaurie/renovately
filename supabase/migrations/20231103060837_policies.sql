@@ -37,10 +37,14 @@ select to public using (true);
 create policy "Enable read access for all users" on "public"."area" as permissive for
 select to public using (true);
 -- 
--- Progress Updates Images
-create policy "Enable read access for all users" on "public"."progress_update_images" as permissive for
-select to public using (true);
--- 
 -- Progress Updates
 create policy "Enable read access for all users" on "public"."progress_updates" as permissive for
 select to public using (true);
+create policy "Enable insert for authenticated users only" on "public"."progress_updates" as permissive for
+insert to authenticated with check (true);
+-- 
+-- Progress Updates Images
+create policy "Enable read access for all users" on "public"."progress_update_images" as permissive for
+select to public using (true);
+create policy "Enable insert for authenticated users only" on "public"."progress_update_images" as permissive for
+insert to authenticated with check (true);

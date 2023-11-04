@@ -2,8 +2,8 @@
 import { Admin, CustomRoutes, Resource } from "react-admin";
 import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
 import { BrowserRouter, Route } from "react-router-dom";
-import { dataProvider } from "./dataProvider";
-import { authProvider } from "./authProvider";
+import { dataProvider } from "./providers";
+import { authProvider } from "./providers";
 import Dashboard from "./dashboard";
 import {
   PropertyList,
