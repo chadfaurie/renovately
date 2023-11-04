@@ -1,7 +1,7 @@
 import { Create, ReferenceInput, SimpleForm, TextInput } from "react-admin";
 
 export const TaskCreate = () => (
-  <Create>
+  <Create redirect="show">
     <SimpleForm>
       <TextInput source="description" />
       <TextInput source="to_be_completed_by" />

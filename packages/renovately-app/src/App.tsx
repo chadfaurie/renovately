@@ -1,5 +1,14 @@
 // in App.js
 import { Admin, CustomRoutes, Resource } from "react-admin";
+import {
+  Home as PropertyIcon,
+  Room as AreaIcon,
+  ProductionQuantityLimits as ProjectIcon,
+  People as PartnerIcon,
+  Task as TaskIcon,
+  ArrowForward as ProgressUpdateIcon,
+  PersonAdd as UserIcon,
+} from "@mui/icons-material";
 import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
 import { BrowserRouter, Route } from "react-router-dom";
 import { dataProvider } from "./providers";
@@ -62,6 +71,7 @@ export const MyAdmin = () => (
 
       <Resource
         name="property"
+        icon={PropertyIcon}
         list={PropertyList}
         show={PropertyShow}
         edit={PropertyEdit}
@@ -69,6 +79,7 @@ export const MyAdmin = () => (
       />
       <Resource
         name="project"
+        icon={ProjectIcon}
         list={ProjectList}
         show={ProjectShow}
         edit={ProjectEdit}
@@ -76,6 +87,7 @@ export const MyAdmin = () => (
       />
       <Resource
         name="partner"
+        icon={PartnerIcon}
         list={PartnerList}
         show={PartnerShow}
         edit={PartnerEdit}
@@ -83,6 +95,7 @@ export const MyAdmin = () => (
       />
       <Resource
         name="task"
+        icon={TaskIcon}
         list={TaskList}
         show={TaskShow}
         edit={TaskEdit}
@@ -90,6 +103,7 @@ export const MyAdmin = () => (
       />
       <Resource
         name="area"
+        icon={AreaIcon}
         list={AreaList}
         show={AreaShow}
         edit={AreaEdit}
@@ -97,6 +111,7 @@ export const MyAdmin = () => (
       />
       <Resource
         name="progress_updates"
+        icon={ProgressUpdateIcon}
         list={ProgressUpdateList}
         show={ProgressUpdateShow}
         edit={ProgressUpdateEdit}
@@ -110,6 +125,7 @@ export const MyAdmin = () => (
       {/* User Management */}
       <Resource
         name="user_profile"
+        icon={UserIcon}
         list={UserProfileList}
         show={UserProfileShow}
         edit={UserProfileEdit}

@@ -1,11 +1,12 @@
 import { Create, SimpleForm, TextInput } from "react-admin";
+import { UpdateTypeSelect } from "./utils";
 
 export const ProgressUpdateCreate = () => (
   <Create>
     <SimpleForm>
       <TextInput source="update_description" />
       <TextInput source="related_entity_id" />
-      <TextInput source="update_type" />
+      <UpdateTypeSelect />
       <TextInput source="uploaded_by" />
     </SimpleForm>
   </Create>

@@ -18,6 +18,19 @@ const overrides: Partial<Theme> = {
       defaultProps: {
         size: "small",
       },
+      styleOverrides: {
+        colorInfo: "blue",
+      },
+    },
+    MuiAutocomplete: {
+      defaultProps: {
+        fullWidth: true,
+      },
+    },
+    MuiSelect: {
+      defaultProps: {
+        fullWidth: true,
+      },
     },
   },
 };

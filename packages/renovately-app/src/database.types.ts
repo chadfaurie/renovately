@@ -34,27 +34,131 @@ export interface Database {
   }
   public: {
     Tables: {
+      area: {
+        Row: {
+          after_images: string[] | null
+          area_description: string | null
+          area_dimensions: string | null
+          area_name: string
+          area_type: string
+          before_images: string[] | null
+          created_at: string
+          created_by: string
+          current_condition: string | null
+          desired_features: string | null
+          id: string
+          materials_needed: string[] | null
+          property_id: string
+          renovation_requirements: string | null
+          renovation_status: string | null
+        }
+        Insert: {
+          after_images?: string[] | null
+          area_description?: string | null
+          area_dimensions?: string | null
+          area_name: string
+          area_type: string
+          before_images?: string[] | null
+          created_at?: string
+          created_by?: string
+          current_condition?: string | null
+          desired_features?: string | null
+          id?: string
+          materials_needed?: string[] | null
+          property_id: string
+          renovation_requirements?: string | null
+          renovation_status?: string | null
+        }
+        Update: {
+          after_images?: string[] | null
+          area_description?: string | null
+          area_dimensions?: string | null
+          area_name?: string
+          area_type?: string
+          before_images?: string[] | null
+          created_at?: string
+          created_by?: string
+          current_condition?: string | null
+          desired_features?: string | null
+          id?: string
+          materials_needed?: string[] | null
+          property_id?: string
+          renovation_requirements?: string | null
+          renovation_status?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "area_property_id_fkey"
+            columns: ["property_id"]
+            referencedRelation: "property"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      audit_trail: {
+        Row: {
+          action: string
+          entity: string
+          entity_id: string
+          id: string
+          new_data: Json | null
+          old_data: Json | null
+          timestamp: string
+          user_id: string
+        }
+        Insert: {
+          action: string
+          entity: string
+          entity_id: string
+          id?: string
+          new_data?: Json | null
+          old_data?: Json | null
+          timestamp?: string
+          user_id?: string
+        }
+        Update: {
+          action?: string
+          entity?: string
+          entity_id?: string
+          id?: string
+          new_data?: Json | null
+          old_data?: Json | null
+          timestamp?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "audit_trail_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       partner: {
         Row: {
           created_at: string
+          created_by: string
           description: string | null
           id: string
           name: string
-          partner_type: string
+          partner_type: Database["public"]["Enums"]["partner_type"]
         }
         Insert: {
           created_at?: string
+          created_by?: string
           description?: string | null
           id?: string
           name: string
-          partner_type: string
+          partner_type: Database["public"]["Enums"]["partner_type"]
         }
         Update: {
           created_at?: string
+          created_by?: string
           description?: string | null
           id?: string
           name?: string
-          partner_type?: string
+          partner_type?: Database["public"]["Enums"]["partner_type"]
         }
         Relationships: []
       }
@@ -62,6 +166,7 @@ export interface Database {
         Row: {
           assigned_date: string | null
           created_at: string
+          created_by: string
           id: string
           partner_id: string | null
           project_id: string | null
@@ -70,6 +175,7 @@ export interface Database {
         Insert: {
           assigned_date?: string | null
           created_at?: string
+          created_by?: string
           id?: string
           partner_id?: string | null
           project_id?: string | null
@@ -78,6 +184,7 @@ export interface Database {
         Update: {
           assigned_date?: string | null
           created_at?: string
+          created_by?: string
           id?: string
           partner_id?: string | null
           project_id?: string | null
@@ -98,9 +205,71 @@ export interface Database {
           }
         ]
       }
+      progress_update_images: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          image_url: string
+          progress_update_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          image_url: string
+          progress_update_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          image_url?: string
+          progress_update_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "progress_update_images_progress_update_id_fkey"
+            columns: ["progress_update_id"]
+            referencedRelation: "progress_updates"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      progress_updates: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          related_entity_id: string
+          update_description: string
+          update_type: Database["public"]["Enums"]["update_type"] | null
+          uploaded_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          related_entity_id: string
+          update_description: string
+          update_type?: Database["public"]["Enums"]["update_type"] | null
+          uploaded_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          related_entity_id?: string
+          update_description?: string
+          update_type?: Database["public"]["Enums"]["update_type"] | null
+          uploaded_by?: string | null
+        }
+        Relationships: []
+      }
       project: {
         Row: {
           created_at: string
+          created_by: string
           description: string | null
           estimated_end_date: string | null
           id: string
@@ -111,6 +280,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string
+          created_by?: string
           description?: string | null
           estimated_end_date?: string | null
           id?: string
@@ -121,6 +291,7 @@ export interface Database {
         }
         Update: {
           created_at?: string
+          created_by?: string
           description?: string | null
           estimated_end_date?: string | null
           id?: string
@@ -143,6 +314,7 @@ export interface Database {
           access_restrictions: string | null
           address: string
           created_at: string
+          created_by: string
           id: string
           nickname: string | null
           ownership_type: string | null
@@ -151,6 +323,7 @@ export interface Database {
           access_restrictions?: string | null
           address: string
           created_at?: string
+          created_by?: string
           id?: string
           nickname?: string | null
           ownership_type?: string | null
@@ -159,15 +332,63 @@ export interface Database {
           access_restrictions?: string | null
           address?: string
           created_at?: string
+          created_by?: string
           id?: string
           nickname?: string | null
           ownership_type?: string | null
         }
         Relationships: []
       }
+      task: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string | null
+          id: string
+          priority: number | null
+          project_id: string | null
+          status: string | null
+          to_be_completed_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          id?: string
+          priority?: number | null
+          project_id?: string | null
+          status?: string | null
+          to_be_completed_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string | null
+          id?: string
+          priority?: number | null
+          project_id?: string | null
+          status?: string | null
+          to_be_completed_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "task_project_id_fkey"
+            columns: ["project_id"]
+            referencedRelation: "project"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "task_to_be_completed_by_fkey"
+            columns: ["to_be_completed_by"]
+            referencedRelation: "partner"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       user_profile: {
         Row: {
           created_at: string
+          created_by: string
           email: string | null
           first_name: string | null
           id: string
@@ -175,6 +396,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string
+          created_by?: string
           email?: string | null
           first_name?: string | null
           id: string
@@ -182,6 +404,7 @@ export interface Database {
         }
         Update: {
           created_at?: string
+          created_by?: string
           email?: string | null
           first_name?: string | null
           id?: string
@@ -196,6 +419,86 @@ export interface Database {
           }
         ]
       }
+      user_project_role_link: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          project_id: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          project_id: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          project_id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_project_role_link_project_id_fkey"
+            columns: ["project_id"]
+            referencedRelation: "project"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_project_role_link_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "user_profile"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      user_property_role_link: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          property_id: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          property_id: string
+          role: Database["public"]["Enums"]["user_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          property_id?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_property_role_link_property_id_fkey"
+            columns: ["property_id"]
+            referencedRelation: "property"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "user_property_role_link_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "user_profile"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
     }
     Views: {
       [_ in never]: never
@@ -204,7 +507,15 @@ export interface Database {
       [_ in never]: never
     }
     Enums: {
-      [_ in never]: never
+      partner_type: "contractor" | "supplier"
+      update_type: "project" | "task" | "room"
+      user_role:
+        | "admin"
+        | "owner"
+        | "manager"
+        | "contractor"
+        | "supplier"
+        | "user"
     }
     CompositeTypes: {
       [_ in never]: never

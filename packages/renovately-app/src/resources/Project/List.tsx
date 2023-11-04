@@ -1,4 +1,4 @@
-import { Datagrid, DateField, List, TextField } from "react-admin";
+import { ChipField, Datagrid, DateField, List, TextField } from "react-admin";
 import { PropertyReferenceField } from "../../references";
 
 export const ProjectList = () => (
@@ -8,7 +8,7 @@ export const ProjectList = () => (
       <TextField source="description" />
       <DateField source="start_date" />
       <DateField source="estimated_end_date" />
-      <TextField source="status" />
+      <ChipField source="status" />
       <PropertyReferenceField source="property_id" />
     </Datagrid>
   </List>

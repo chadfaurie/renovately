@@ -23,6 +23,7 @@ CREATE INDEX "audit_trail_entity_id_idx" ON "public"."audit_trail" USING btree (
 create table "public"."user_profile" (
     "id" uuid not null,
     "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "first_name" character varying,
     "last_name" character varying,
     "email" character varying
@@ -49,6 +50,7 @@ CREATE TYPE user_role AS ENUM (
 create table "public"."property" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "nickname" character varying,
     "address" character varying not null,
     "ownership_type" character varying,
@@ -63,6 +65,7 @@ add constraint "property_pkey" PRIMARY KEY using index "property_pkey";
 CREATE TABLE "public"."area" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "property_id" uuid NOT NULL,
     "area_name" character varying NOT NULL,
     "area_type" character varying NOT NULL,
@@ -89,6 +92,7 @@ ADD CONSTRAINT "area_property_id_fkey" FOREIGN KEY (property_id) REFERENCES prop
 create table "public"."project" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "title" character varying not null,
     "description" text,
     "start_date" date,
@@ -105,12 +109,14 @@ add constraint "project_property_id_fkey" FOREIGN KEY (property_id) REFERENCES p
 alter table "public"."project" validate constraint "project_property_id_fkey";
 -- 
 -- Supplier
+CREATE TYPE partner_type AS ENUM ('contractor', 'supplier');
 create table "public"."partner" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "name" character varying not null,
     "description" text,
-    "partner_type" character varying not null
+    "partner_type" partner_type not null
 );
 alter table "public"."partner" enable row level security;
 CREATE UNIQUE INDEX "partner_pkey" ON public."partner" USING btree (id);
@@ -121,6 +127,7 @@ add constraint "partner_pkey" PRIMARY KEY using index "partner_pkey";
 create table "public"."partner_project_link" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "partner_id" uuid,
     "project_id" uuid,
     "assigned_date" date,
@@ -141,6 +148,7 @@ alter table "public"."partner_project_link" validate constraint "partner_project
 create table "public"."task" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "description" text,
     "to_be_completed_by" uuid,
     "status" character varying,
@@ -162,6 +170,7 @@ alter table "public"."task" validate constraint "task_to_be_completed_by_fkey";
 CREATE TABLE "public"."user_project_role_link" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "user_id" uuid NOT NULL,
     "project_id" uuid NOT NULL,
     "role" user_role NOT NULL,
@@ -179,6 +188,7 @@ ADD CONSTRAINT "user_project_role_link_project_id_fkey" FOREIGN KEY ("project_id
 CREATE TABLE "public"."user_property_role_link" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "user_id" uuid NOT NULL,
     "property_id" uuid NOT NULL,
     "role" user_role NOT NULL,
@@ -197,6 +207,7 @@ CREATE TYPE update_type AS ENUM ('project', 'task', 'room');
 CREATE TABLE "public"."progress_updates" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "update_description" text NOT NULL,
     "related_entity_id" uuid NOT NULL,
     -- This could be project, task, or room ID
@@ -213,6 +224,7 @@ ADD CONSTRAINT "progress_updates_pkey" PRIMARY KEY USING INDEX "progress_updates
 CREATE TABLE "public"."progress_update_images" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_by" uuid NOT NULL default auth.uid(),
     "image_url" text NOT NULL,
     "progress_update_id" uuid NOT NULL -- ID of the progress update
 );

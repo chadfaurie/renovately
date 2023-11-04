@@ -1,4 +1,5 @@
 import {
+  ChipField,
   CreateButton,
   Datagrid,
   DateField,
@@ -16,7 +17,7 @@ export const ProgressUpdateShow = () => (
       <Tab label="summary">
         <TextField source="update_description" />
         <TextField source="related_entity_id" />
-        <TextField source="update_type" />
+        <ChipField source="update_type" />
         <TextField source="uploaded_by" />
       </Tab>
       <Tab label="details">
