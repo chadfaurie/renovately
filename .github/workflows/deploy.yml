@@ -161,6 +161,10 @@ jobs:
 
       - name: Build
         working-directory: packages/admin-ui
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+
         run: yarn build
 
       - name: Publish to Cloudflare Pages
