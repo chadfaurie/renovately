@@ -1,10 +1,4 @@
-import {
-  AutocompleteInput,
-  Edit,
-  ReferenceInput,
-  SimpleForm,
-  TextInput,
-} from "react-admin";
+import { AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput } from "react-admin";
 
 export const TaskEdit = () => (
   <Edit>

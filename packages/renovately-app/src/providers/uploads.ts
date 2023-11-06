@@ -2,9 +2,10 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 // in addUploadFeature.js
 
-import { DataProvider, withLifecycleCallbacks } from "react-admin";
-import { supabaseClient } from ".";
 import { nanoid } from "nanoid";
+import { DataProvider, withLifecycleCallbacks } from "react-admin";
+
+import { supabaseClient } from ".";
 
 /**
  * For posts update only, convert uploaded image in base 64 and attach it to

@@ -1,5 +1,4 @@
 // in App.js
-import { Admin, CustomRoutes, Resource } from "react-admin";
 import {
   Home as PropertyIcon,
   Room as AreaIcon,
@@ -10,47 +9,20 @@ import {
   PersonAdd as UserIcon,
 } from "@mui/icons-material";
 import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
+import { Admin, CustomRoutes, Resource } from "react-admin";
 import { BrowserRouter, Route } from "react-router-dom";
-import { dataProvider } from "./providers";
-import { authProvider } from "./providers";
+
 import Dashboard from "./dashboard";
-import {
-  PropertyList,
-  PropertyEdit,
-  PropertyShow,
-  PropertyCreate,
-} from "./resources/Property";
-import {
-  ProjectCreate,
-  ProjectEdit,
-  ProjectList,
-  ProjectShow,
-} from "./resources/Project";
-import { theme } from "./theme";
-import {
-  PartnerCreate,
-  PartnerEdit,
-  PartnerList,
-  PartnerShow,
-} from "./resources/Partner";
-import { TaskCreate, TaskEdit, TaskList, TaskShow } from "./resources/Task";
+import { authProvider, dataProvider } from "./providers";
 import { AreaCreate, AreaEdit, AreaList, AreaShow } from "./resources/Area";
-import {
-  UserProfileCreate,
-  UserProfileEdit,
-  UserProfileList,
-  UserProfileShow,
-} from "./resources/Users";
-import {
-  ProgressUpdateCreate,
-  ProgressUpdateEdit,
-  ProgressUpdateList,
-  ProgressUpdateShow,
-} from "./resources/Progress";
-import {
-  ProgressUpdateImageCreate,
-  ProgressUpdateImageShow,
-} from "./resources/ProgressImages";
+import { PartnerCreate, PartnerEdit, PartnerList, PartnerShow } from "./resources/Partner";
+import { ProgressUpdateCreate, ProgressUpdateEdit, ProgressUpdateList, ProgressUpdateShow } from "./resources/Progress";
+import { ProgressUpdateImageCreate, ProgressUpdateImageShow } from "./resources/ProgressImages";
+import { ProjectCreate, ProjectEdit, ProjectList, ProjectShow } from "./resources/Project";
+import { PropertyList, PropertyEdit, PropertyShow, PropertyCreate } from "./resources/Property";
+import { TaskCreate, TaskEdit, TaskList, TaskShow } from "./resources/Task";
+import { UserProfileCreate, UserProfileEdit, UserProfileList, UserProfileShow } from "./resources/Users";
+import { theme } from "./theme";
 
 export const MyAdmin = () => (
   <BrowserRouter>
@@ -63,10 +35,7 @@ export const MyAdmin = () => (
     >
       <CustomRoutes noLayout>
         <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />
-        <Route
-          path={ForgotPasswordPage.path}
-          element={<ForgotPasswordPage />}
-        />
+        <Route path={ForgotPasswordPage.path} element={<ForgotPasswordPage />} />
       </CustomRoutes>
 
       <Resource
@@ -93,22 +62,8 @@ export const MyAdmin = () => (
         edit={PartnerEdit}
         create={PartnerCreate}
       />
-      <Resource
-        name="task"
-        icon={TaskIcon}
-        list={TaskList}
-        show={TaskShow}
-        edit={TaskEdit}
-        create={TaskCreate}
-      />
-      <Resource
-        name="area"
-        icon={AreaIcon}
-        list={AreaList}
-        show={AreaShow}
-        edit={AreaEdit}
-        create={AreaCreate}
-      />
+      <Resource name="task" icon={TaskIcon} list={TaskList} show={TaskShow} edit={TaskEdit} create={TaskCreate} />
+      <Resource name="area" icon={AreaIcon} list={AreaList} show={AreaShow} edit={AreaEdit} create={AreaCreate} />
       <Resource
         name="progress_updates"
         icon={ProgressUpdateIcon}
@@ -117,11 +72,7 @@ export const MyAdmin = () => (
         edit={ProgressUpdateEdit}
         create={ProgressUpdateCreate}
       />
-      <Resource
-        name="progress_update_images"
-        show={ProgressUpdateImageShow}
-        create={ProgressUpdateImageCreate}
-      />
+      <Resource name="progress_update_images" show={ProgressUpdateImageShow} create={ProgressUpdateImageCreate} />
       {/* User Management */}
       <Resource
         name="user_profile"

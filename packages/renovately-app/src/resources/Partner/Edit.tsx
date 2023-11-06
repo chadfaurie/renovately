@@ -1,5 +1,6 @@
 import { Edit, SimpleForm, TextInput } from "react-admin";
-import PartnerTypeSelect from "./utils";
+
+import { PartnerTypeSelect } from "./utils";
 
 export const PartnerEdit = () => (
   <Edit>

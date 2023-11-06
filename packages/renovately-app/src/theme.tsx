@@ -1,6 +1,6 @@
-import { nanoLightTheme } from "react-admin";
 import { Theme } from "@mui/material";
 import merge from "lodash.merge";
+import { nanoLightTheme } from "react-admin";
 
 const overrides: Partial<Theme> = {
   components: {

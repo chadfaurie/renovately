@@ -1,5 +1,6 @@
 import { Create, SimpleForm, TextInput } from "react-admin";
-import PartnerTypeSelect from "./utils";
+
+import { PartnerTypeSelect } from "./utils";
 
 export const PartnerCreate = () => (
   <Create redirect="show">

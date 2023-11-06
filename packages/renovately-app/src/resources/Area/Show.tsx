@@ -1,4 +1,5 @@
 import { ChipField, Show, SimpleShowLayout, TextField } from "react-admin";
+
 import { PropertyReferenceField } from "../../references";
 
 export const AreaShow = () => (

@@ -8,6 +8,7 @@ import {
   TabbedShowLayout,
   TextField,
 } from "react-admin";
+
 import { PartnerReferenceField, ProjectReferenceField } from "../../references";
 
 export const PartnerShow = () => (
@@ -19,12 +20,7 @@ export const PartnerShow = () => (
         <ChipField source="partner_type" />
       </Tab>
       <Tab label="projects">
-        <ReferenceManyField
-          label={false}
-          reference="partner_project_link"
-          source="id"
-          target="partner_id"
-        >
+        <ReferenceManyField label={false} reference="partner_project_link" source="id" target="partner_id">
           <Datagrid>
             <PartnerReferenceField source="partner_id" label="Title" />
             <ChipField source="status" />

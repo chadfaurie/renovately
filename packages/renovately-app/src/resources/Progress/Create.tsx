@@ -1,4 +1,5 @@
 import { Create, SimpleForm, TextInput } from "react-admin";
+
 import { UpdateTypeSelect } from "./utils";
 
 export const ProgressUpdateCreate = () => (

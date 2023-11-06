@@ -1,12 +1,5 @@
-import {
-  ReferenceManyField,
-  Show,
-  Tab,
-  TabbedShowLayout,
-  TextField,
-  Datagrid,
-  DateField,
-} from "react-admin";
+import { ReferenceManyField, Show, Tab, TabbedShowLayout, TextField, Datagrid, DateField } from "react-admin";
+
 import { ProjectReferenceField } from "../../references";
 
 export const PropertyShow = () => (
@@ -19,12 +12,7 @@ export const PropertyShow = () => (
         <TextField source="access_restrictions" />
       </Tab>
       <Tab label="Projects">
-        <ReferenceManyField
-          label={false}
-          reference="project"
-          source="id"
-          target="property_id"
-        >
+        <ReferenceManyField label={false} reference="project" source="id" target="property_id">
           <Datagrid>
             <ProjectReferenceField source="id" label="Title" />
             <TextField source="description" />

@@ -1,4 +1,5 @@
 import { ChipField, Datagrid, List, TextField } from "react-admin";
+
 import { PropertyReferenceField } from "../../references";
 
 export const AreaList = () => (

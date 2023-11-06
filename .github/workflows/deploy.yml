@@ -26,6 +26,8 @@ jobs:
     outputs:
       project_name: ${{ steps.project.outputs.project_name }}
       environment: ${{ steps.environment.outputs.environment }}
+    env:
+      environments: '{"main": "production", "develop": "development"}'
     steps:
       - name: Get Project Name
         id: project
@@ -41,7 +43,7 @@ jobs:
       - name: Set env name
         id: environment
         run: |
-          ENV=$(echo '${{ inputs.environments }}' | jq -r '.${{ steps.extract_branch.outputs.branch }}')
+          ENV=$(echo '${{ env.environments }}' | jq -r '.${{ steps.extract_branch.outputs.branch }}')
           echo "environment=$ENV"
           echo "environment=$ENV" >> $GITHUB_OUTPUT
 

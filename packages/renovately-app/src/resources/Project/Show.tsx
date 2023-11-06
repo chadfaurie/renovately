@@ -1,10 +1,5 @@
-import {
-  ChipField,
-  DateField,
-  Show,
-  SimpleShowLayout,
-  TextField,
-} from "react-admin";
+import { ChipField, DateField, Show, SimpleShowLayout, TextField } from "react-admin";
+
 import { PropertyReferenceField } from "../../references";
 
 export const ProjectShow = () => (

@@ -22,10 +22,7 @@ export const ProgressUpdateShow = () => (
       </Tab>
       <Tab label="details">
         <CreateButton resource="progress_update_images" />
-        <ReferenceManyField
-          reference="progress_update_images"
-          target="progress_update_id"
-        >
+        <ReferenceManyField reference="progress_update_images" target="progress_update_id">
           <Datagrid>
             <DateField source="created_at" />
             <TextField source="image_url" />

@@ -1,4 +1,5 @@
 import { supabaseAuthProvider } from "ra-supabase";
+
 import { supabaseClient } from "./supabase";
 
 export const authProvider = supabaseAuthProvider(supabaseClient, {

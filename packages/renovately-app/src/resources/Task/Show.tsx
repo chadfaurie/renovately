@@ -1,4 +1,5 @@
 import { ChipField, Show, SimpleShowLayout, TextField } from "react-admin";
+
 import { PartnerReferenceField, ProjectReferenceField } from "../../references";
 
 export const TaskShow = () => (

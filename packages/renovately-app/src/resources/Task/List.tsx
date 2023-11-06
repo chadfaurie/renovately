@@ -1,4 +1,5 @@
 import { ChipField, Datagrid, List, TextField } from "react-admin";
+
 import { PartnerReferenceField, ProjectReferenceField } from "../../references";
 
 export const TaskList = () => (

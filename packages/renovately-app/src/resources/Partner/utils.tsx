@@ -1,4 +1,5 @@
 import { SelectInput } from "react-admin";
+
 import { Database } from "../../database.types";
 import { Choices } from "../../utils";
 
@@ -12,5 +13,3 @@ const choices: Choices<PartnerType> = [
 export const PartnerTypeSelect = () => {
   return <SelectInput source="partner_type" choices={choices} />;
 };
-
-export default PartnerTypeSelect;
