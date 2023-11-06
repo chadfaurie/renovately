@@ -22,7 +22,28 @@ env:
 jobs:
   setup:
     name: Setup
-    uses: Bluetrino/workflows/.github/workflows/setup.yml@main
+    runs-on: ubuntu-latest
+    outputs:
+      project_name: ${{ steps.project.outputs.project_name }}
+      environment: ${{ steps.environment.outputs.environment }}
+    steps:
+      - name: Get Project Name
+        id: project
+        run: |
+          PROJECT_NAME=$(echo '${{ github.repository }}' | awk -F '/' '{print $2}')
+          echo "project_name=$PROJECT_NAME"
+          echo "project_name=$PROJECT_NAME" >> $GITHUB_OUTPUT
+
+      - name: Extract branch name
+        id: extract_branch
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+
+      - name: Set env name
+        id: environment
+        run: |
+          ENV=$(echo '${{ inputs.environments }}' | jq -r '.${{ steps.extract_branch.outputs.branch }}')
+          echo "environment=$ENV"
+          echo "environment=$ENV" >> $GITHUB_OUTPUT
 
   ci:
     name: Deploy Admin UI
