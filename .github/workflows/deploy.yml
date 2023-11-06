@@ -47,8 +47,8 @@ jobs:
           echo "environment=$ENV"
           echo "environment=$ENV" >> $GITHUB_OUTPUT
 
-  ci:
-    name: Deploy Admin UI
+  checks:
+    name: Run Checks
     needs:
       - setup
     runs-on: ubuntu-latest
@@ -79,10 +79,6 @@ jobs:
         with:
           fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
 
-      - uses: supabase/setup-cli@v1
-        with:
-          version: latest
-
       - name: Install Packages
         run: |
           yarn install --frozen-lockfile
@@ -111,10 +107,61 @@ jobs:
       #           echo "VERSION=${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
       #     fi
 
+  database:
+    name: Deploy Supbase Database
+    needs:
+      - checks
+    runs-on: ubuntu-latest
+    environment: ${{ needs.setup.outputs.environment }}
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PRODUCTION_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ vars.SUPABASE_PROJECT_ID }}
+    steps:
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
       - name: Link Supabase Project
         run: supabase link --project-ref $SUPABASE_PROJECT_ID
       - name: Deploy Supabase Database
         run: supabase db push
+
+  adminUi:
+    name: Deploy Admin UI
+    needs:
+      - checks
+    runs-on: ubuntu-latest
+    environment: ${{ needs.setup.outputs.environment }}
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PRODUCTION_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ vars.SUPABASE_PROJECT_ID }}
+
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          # fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: 18
+          registry-url: https://npm.pkg.github.com
+          scope: "@bluetrino"
+          cache: "yarn"
+
+      - name: Install Packages
+        run: |
+          yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GPR_TOKEN }}
+
+      - name: Build
+        working-directory: packages/admin-ui
+        run: yarn build
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
