@@ -53,6 +53,10 @@ jobs:
       - setup
     runs-on: ubuntu-latest
     environment: ${{ needs.setup.outputs.environment }}
+    env:
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.PRODUCTION_DB_PASSWORD }}
+      SUPABASE_PROJECT_ID: ${{ vars.SUPABASE_PROJECT_ID }}
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
@@ -74,6 +78,10 @@ jobs:
         uses: "WyriHaximus/github-action-get-previous-tag@v1"
         with:
           fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
 
       - name: Install Packages
         run: |
@@ -102,6 +110,11 @@ jobs:
       #           echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
       #           echo "VERSION=${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
       #     fi
+
+      - name: Link Supabase Project
+        run: supabase link --project-ref $SUPABASE_PROJECT_ID
+      - name: Deploy Supabase Database
+        run: supabase db push
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1

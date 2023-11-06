@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 7
     steps:
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+
       - name: "Setup"
         run: |
           [[ ! -z "${{ secrets.CODECOV_TOKEN }}" ]] && echo "CODE_COV_TOKEN_AVAILABLE=true" || echo "CODE_COV_TOKEN_AVAILABLE=false" >> $GITHUB_ENV
@@ -32,6 +36,18 @@ jobs:
 
       - name: Run Linters
         run: npm run lint --if-present
+
+      - name: Start Supabase local development setup
+        run: supabase start
+
+      - name: Verify generated types are checked in
+        run: |
+          supabase gen types typescript --local > types.gen.ts
+          if ! git diff --ignore-space-at-eol --exit-code --quiet types.gen.ts; then
+            echo "Detected uncommitted changes after build. See status below:"
+            git diff
+            exit 1
+          fi
 
       - name: Build
         run: npm run build --if-present
