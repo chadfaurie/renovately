@@ -171,6 +171,48 @@ VALUES (
 		'{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}',
 		'2023-11-04 08:36:23.138897+00',
 		''
+	),
+	(
+		'00000000-0000-0000-0000-000000000000',
+		'23f5fd67-2b36-4c0f-8e4c-121384088aad',
+		'{"action":"logout","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account"}',
+		'2023-11-04 08:50:08.621894+00',
+		''
+	),
+	(
+		'00000000-0000-0000-0000-000000000000',
+		'd0760ed8-f2f7-42c0-abaf-41f6c977f6db',
+		'{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}',
+		'2023-11-04 08:50:25.08834+00',
+		''
+	),
+	(
+		'00000000-0000-0000-0000-000000000000',
+		'887b9fa8-e38a-4211-ac96-4f5016f4d8c6',
+		'{"action":"logout","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account"}',
+		'2023-11-04 08:50:33.806837+00',
+		''
+	),
+	(
+		'00000000-0000-0000-0000-000000000000',
+		'5b5e8d65-4e8d-4136-a04c-a9d110b3175c',
+		'{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}',
+		'2023-11-04 08:50:57.895489+00',
+		''
+	),
+	(
+		'00000000-0000-0000-0000-000000000000',
+		'7712ac45-5c0c-477d-8889-ac43ea26504d',
+		'{"action":"logout","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account"}',
+		'2023-11-04 08:53:14.513378+00',
+		''
+	),
+	(
+		'00000000-0000-0000-0000-000000000000',
+		'80bc85e3-66b2-489e-be6b-16875b504893',
+		'{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}',
+		'2023-11-04 08:53:40.931325+00',
+		''
 	);
 --
 -- Data for Name: flow_state; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
@@ -266,12 +308,12 @@ VALUES (
 		'',
 		'',
 		NULL,
-		'2023-11-04 08:36:23.13942+00',
+		'2023-11-04 08:53:40.931829+00',
 		'{"provider": "email", "providers": ["email"]}',
 		'{}',
 		NULL,
 		'2023-11-02 12:42:42.170428+00',
-		'2023-11-04 08:36:23.141121+00',
+		'2023-11-04 08:53:40.933396+00',
 		NULL,
 		NULL,
 		'',
@@ -325,10 +367,10 @@ INSERT INTO "auth"."sessions" (
 		"not_after"
 	)
 VALUES (
-		'91083a58-0410-47a1-91ae-e302677aa0dd',
+		'511138ca-f0e4-4a30-b850-a2c49697ec7e',
 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
-		'2023-11-04 08:36:23.139487+00',
-		'2023-11-04 08:36:23.139487+00',
+		'2023-11-04 08:53:40.931889+00',
+		'2023-11-04 08:53:40.931889+00',
 		NULL,
 		'aal1',
 		NULL
@@ -345,11 +387,11 @@ INSERT INTO "auth"."mfa_amr_claims" (
 		"id"
 	)
 VALUES (
-		'91083a58-0410-47a1-91ae-e302677aa0dd',
-		'2023-11-04 08:36:23.141517+00',
-		'2023-11-04 08:36:23.141517+00',
+		'511138ca-f0e4-4a30-b850-a2c49697ec7e',
+		'2023-11-04 08:53:40.93363+00',
+		'2023-11-04 08:53:40.93363+00',
 		'password',
-		'91f4d897-8b4a-4b37-af37-95cd99210998'
+		'7ceaf4a5-4caa-42dc-8e55-b6132af4a9c3'
 	);
 --
 -- Data for Name: mfa_factors; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
@@ -376,14 +418,14 @@ INSERT INTO "auth"."refresh_tokens" (
 	)
 VALUES (
 		'00000000-0000-0000-0000-000000000000',
-		11,
-		'DjWR1-MyI9Gcai73XjtQaw',
+		14,
+		'UnGR_zu1nkXoxXX0NQCpXw',
 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
 		false,
-		'2023-11-04 08:36:23.140213+00',
-		'2023-11-04 08:36:23.140213+00',
+		'2023-11-04 08:53:40.93265+00',
+		'2023-11-04 08:53:40.93265+00',
 		NULL,
-		'91083a58-0410-47a1-91ae-e302677aa0dd'
+		'511138ca-f0e4-4a30-b850-a2c49697ec7e'
 	);
 --
 -- Data for Name: sso_providers; Type: TABLE DATA; Schema: auth; Owner: supabase_auth_admin
@@ -431,6 +473,40 @@ VALUES (
 -- Data for Name: area; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO "public"."area" (
+		"id",
+		"created_at",
+		"created_by",
+		"property_id",
+		"area_name",
+		"area_type",
+		"area_dimensions",
+		"area_description",
+		"renovation_status",
+		"renovation_requirements",
+		"before_images",
+		"after_images",
+		"current_condition",
+		"desired_features",
+		"materials_needed"
+	)
+VALUES (
+		'9986a9b8-2432-4e8c-8276-dfe4b1e5756d',
+		'2023-11-04 09:02:52.328137+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'fbecec1c-e450-4b40-8506-6d64365f5dff',
+		'Bathroom',
+		'BATHROOM',
+		'4mx6m',
+		'Main Bathroom',
+		'Things?',
+		'Thnings?',
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL
+	);
 --
 -- Data for Name: audit_trail; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -454,6 +530,14 @@ VALUES (
 		'Bob The Builder',
 		'Builder',
 		'contractor'
+	),
+	(
+		'8e3d865f-633e-4584-9c83-e5b6c64e125d',
+		'2023-11-04 08:51:05.183938+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'Tiles',
+		'Tiles',
+		'supplier'
 	);
 --
 -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -480,6 +564,17 @@ VALUES (
 		'2023-12-31',
 		'BUSY',
 		'fbecec1c-e450-4b40-8506-6d64365f5dff'
+	),
+	(
+		'76da9b6a-0c57-4d25-9090-c4cb439ec251',
+		'2023-11-04 08:53:57.303365+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'Indoor Painting',
+		'Paint Indoors',
+		'2023-12-31',
+		'2023-12-31',
+		'PLANNING',
+		'fbecec1c-e450-4b40-8506-6d64365f5dff'
 	);
 --
 -- Data for Name: partner_project_link; Type: TABLE DATA; Schema: public; Owner: postgres
@@ -489,14 +584,72 @@ VALUES (
 -- Data for Name: progress_updates; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO "public"."progress_updates" (
+		"id",
+		"created_at",
+		"created_by",
+		"update_description",
+		"related_entity_id",
+		"update_type"
+	)
+VALUES (
+		'10b308c5-b38b-4054-ba36-7af05a481d4c',
+		'2023-11-04 09:04:50.340946+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
+		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
+		'project'
+	),
+	(
+		'c33d7a5b-56c1-45d4-b5cd-2deb4764d8e2',
+		'2023-11-04 09:21:43.919502+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'Test',
+		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
+		'project'
+	);
 --
 -- Data for Name: progress_update_images; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO "public"."progress_update_images" (
+		"id",
+		"created_at",
+		"created_by",
+		"image_url",
+		"progress_update_id"
+	)
+VALUES (
+		'6cda5ce6-b96c-4459-995c-0d373e464d7f',
+		'2023-11-04 09:07:22.251902+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'http://127.0.0.1:54321/storage/v1/object/public/progress_update_images/',
+		'10b308c5-b38b-4054-ba36-7af05a481d4c'
+	);
 --
 -- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
+INSERT INTO "public"."task" (
+		"id",
+		"created_at",
+		"created_by",
+		"description",
+		"to_be_completed_by",
+		"status",
+		"priority",
+		"project_id"
+	)
+VALUES (
+		'a4d6a19d-f2b4-4c72-ac2c-dca0c0d40e33',
+		'2023-11-04 09:12:28.62943+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'Test',
+		'8e3d865f-633e-4584-9c83-e5b6c64e125d',
+		'DONE',
+		1,
+		'76da9b6a-0c57-4d25-9090-c4cb439ec251'
+	);
 --
 -- Data for Name: user_profile; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -622,7 +775,7 @@ VALUES (
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 11, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 14, true);
 --
 -- Name: key_key_id_seq; Type: SEQUENCE SET; Schema: pgsodium; Owner: supabase_admin
 --

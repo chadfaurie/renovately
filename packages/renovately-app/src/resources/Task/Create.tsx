@@ -1,13 +1,15 @@
-import { Create, ReferenceInput, SimpleForm, TextInput } from "react-admin";
+import { Create, SimpleForm, TextInput } from "react-admin";
+
+import { PartnerReferenceInput, ProjectReferenceInput } from "../../references";
 
 export const TaskCreate = () => (
   <Create redirect="show">
     <SimpleForm>
       <TextInput source="description" />
-      <TextInput source="to_be_completed_by" />
+      <PartnerReferenceInput source="to_be_completed_by" />
       <TextInput source="status" />
       <TextInput source="priority" />
-      <ReferenceInput source="project_id" reference="projects" />
+      <ProjectReferenceInput source="project_id" />
     </SimpleForm>
   </Create>
 );

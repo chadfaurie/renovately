@@ -3,7 +3,7 @@ import { Admin, CustomRoutes, Resource } from "react-admin";
 import {
   Home as PropertyIcon,
   Room as AreaIcon,
-  ProductionQuantityLimits as ProjectIcon,
+  PropaneTank as ProjectIcon,
   People as PartnerIcon,
   Task as TaskIcon,
   ArrowForward as ProgressUpdateIcon,
