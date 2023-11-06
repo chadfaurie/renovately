@@ -1,0 +1,98 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build Release
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: [main, develop, sandbox]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AWS_REGION: eu-west-1 # set this to your preferred AWS region, e.g. us-west-1
+  AWS_ACCESS_KEY_NAME: AWS_ACCESS_KEY_ID_UATU
+  AWS_SECRET_ACCESS_KEY_NAME: AWS_SECRET_ACCESS_KEY_UATU
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  setup:
+    name: Setup
+    uses: Bluetrino/workflows/.github/workflows/setup.yml@main
+
+  ci:
+    name: Deploy Admin UI
+    needs:
+      - setup
+    runs-on: ubuntu-latest
+    environment: ${{ needs.setup.outputs.environment }}
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          # fetch-depth: 0
+          persist-credentials: false
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: 18
+          registry-url: https://npm.pkg.github.com
+          scope: "@bluetrino"
+          cache: "yarn"
+
+      - name: Get Latest Tag
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
+
+      - name: Install Packages
+        run: |
+          yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GPR_TOKEN }}
+
+      - name: Lint
+        run: yarn lint
+
+      - name: Release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release
+
+      - name: Set Version
+        id: version
+        run: |
+          if [ -z "${{ env.SEMANTIC_VERSION }}" ]
+          then
+                echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
+                echo "VERSION=${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
+          else
+                echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
+                echo "VERSION=${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
+          fi
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: ${{ vars.PROJECT_NAME }}
+          directory: dist
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # Optional: Switch what branch you are publishing to.
+          # By default this will be the branch which triggered this workflow
+          branch: main
+          # Optional: Change the working directory
+          workingDirectory: packages/renovately-app
+          # Optional: Change the Wrangler version, allows you to point to a specific version or a tag such as `beta`
+          wranglerVersion: '3'

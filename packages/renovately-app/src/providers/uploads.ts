@@ -20,7 +20,7 @@ export const addUploadFeature = (requestHandler: DataProvider) => {
        */
       resource: "progress_update_images",
 
-      beforeCreate: async (params: any, dataProvider: DataProvider) => {
+      beforeCreate: async (params: any, _dataProvider: DataProvider) => {
         console.log(params);
 
         const image = params?.data.image_url?.rawFile;

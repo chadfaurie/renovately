@@ -1,0 +1,51 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  run_tests:
+    name: Run Linters, Tests and Coverage
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - name: "Setup"
+        run: |
+          [[ ! -z "${{ secrets.CODECOV_TOKEN }}" ]] && echo "CODE_COV_TOKEN_AVAILABLE=true" || echo "CODE_COV_TOKEN_AVAILABLE=false" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          always-auth: true
+          node-version: 18
+          registry-url: https://npm.pkg.github.com
+          scope: "@bluetrino"
+          cache: "yarn"
+
+      - run: yarn ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Run Linters
+        run: npm run lint --if-present
+
+      - name: Build
+        run: npm run build --if-present
+
+      - name: Generate coverage report
+        if: inputs.tests_enabled
+        run: |
+          ${{ inputs.test_command }}}
+
+      - uses: codecov/codecov-action@v3
+        if: env.CODE_COV_TOKEN_AVAILABLE == 'true'
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          # file: ./coverage.xml # optional
+          # flags: unittests # optional
+          # name: codecov-umbrella # optional
+          fail_ci_if_error: false # optional (default = false)
