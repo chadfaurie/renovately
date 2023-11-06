@@ -84,24 +84,24 @@ jobs:
       - name: Lint
         run: yarn lint
 
-      - name: Release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx semantic-release
+      # - name: Release
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   run: npx semantic-release
 
-      - name: Set Version
-        id: version
-        run: |
-          if [ -z "${{ env.SEMANTIC_VERSION }}" ]
-          then
-                echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
-                echo "VERSION=${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
-          else
-                echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
-                echo "VERSION=${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
-          fi
+      # - name: Set Version
+      #   id: version
+      #   run: |
+      #     if [ -z "${{ env.SEMANTIC_VERSION }}" ]
+      #     then
+      #           echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
+      #           echo "VERSION=${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
+      #     else
+      #           echo "PROJECT_VERSION=${{ needs.setup.outputs.project_name }}@${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
+      #           echo "VERSION=${{ env.SEMANTIC_VERSION }}" >> $GITHUB_ENV
+      #     fi
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
