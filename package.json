@@ -10,8 +10,10 @@
     "packages/*"
   ],
   "scripts": {
-    "app:gen:types": "npx supabase gen types typescript --local > packages/renovately-app/database.types.ts",
-    "db:dump:seed": "npx supabase db dump --local -f supabase/seed.sql --data-only",
+    "app:gen:types": "npx supabase gen types typescript --local > packages/admin-ui/database.types.ts",
+    "db:dump:seed:local": "npx supabase db dump --local -f supabase/seed.sql --data-only",
+    "db:dump:seed:remote": "npx supabase db dump -f supabase/seed.sql --data-only",
+    "db:reset": "npx supabase db reset --local",
     "lint": "eslint packages/* --ext .js,.jsx,.ts,.tsx",
     "lint:fix": "eslint packages/* --ext .js,.jsx,.ts,.tsx --fix"
   },

@@ -502,7 +502,7 @@ export interface Database {
     };
     Enums: {
       partner_type: "contractor" | "supplier";
-      update_type: "project" | "task" | "room";
+      update_type: "project" | "task" | "area";
       user_role: "admin" | "owner" | "manager" | "contractor" | "supplier" | "user";
     };
     CompositeTypes: {

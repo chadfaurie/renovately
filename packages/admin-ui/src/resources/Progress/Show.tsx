@@ -11,16 +11,18 @@ import {
   TextField,
 } from "react-admin";
 
+import { relatedSourceMap } from "./utils";
+import { MultiLinkField } from "../../components/react-admin";
+
 export const ProgressUpdateShow = () => (
   <Show>
     <TabbedShowLayout>
-      <Tab label="summary">
+      <Tab label="Summary">
         <TextField source="update_description" />
-        <TextField source="related_entity_id" />
         <ChipField source="update_type" />
-        <TextField source="uploaded_by" />
+        <MultiLinkField source="related_entity_id" referenceField="update_type" relatedSource={relatedSourceMap} />
       </Tab>
-      <Tab label="details">
+      <Tab label="Images">
         <CreateButton resource="progress_update_images" />
         <ReferenceManyField reference="progress_update_images" target="progress_update_id">
           <Datagrid>

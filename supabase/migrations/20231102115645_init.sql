@@ -203,7 +203,7 @@ ALTER TABLE "public"."user_property_role_link"
 ADD CONSTRAINT "user_property_role_link_property_id_fkey" FOREIGN KEY ("property_id") REFERENCES "public"."property"("id");
 -- 
 -- Progress Updates
-CREATE TYPE update_type AS ENUM ('project', 'task', 'room');
+CREATE TYPE update_type AS ENUM ('project', 'task', 'area');
 CREATE TABLE "public"."progress_updates" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone NOT NULL DEFAULT now(),
