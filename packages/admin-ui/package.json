@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@raphiniert/ra-data-postgrest": "2.0.0-alpha.3",
+    "@raphiniert/ra-data-postgrest": "2.0.0-alpha.0",
     "@supabase/supabase-js": "^2.38.4",
     "lodash.merge": "^4.6.2",
     "nanoid": "^5.0.3",
