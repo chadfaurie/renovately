@@ -8,7 +8,7 @@ const cfg = {
     "plugin:prettier/recommended",
     "plugin:import/recommended",
   ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  ignorePatterns: ["dist", ".eslintrc.cjs", "database.types.ts"],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
   settings: {
