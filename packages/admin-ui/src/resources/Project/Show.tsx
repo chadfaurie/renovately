@@ -25,7 +25,7 @@ export const ProjectShow = () => (
         <PropertyReferenceField source="property_id" />
       </Tab>
       <Tab label="Updates">
-        <UpdatesTab type="area" />
+        <UpdatesTab type="project" />
       </Tab>
       <Tab label="Access">
         <ReferenceManyField label={false} reference="user_project_role_link" source="id" target="project_id">
