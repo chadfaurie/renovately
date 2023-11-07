@@ -5,7 +5,10 @@ insert to authenticated with check (true);
 -- 
 -- User Profile
 create policy "Enable insert for authenticated users only" on "public"."user_profile" as permissive for
-insert to authenticated with check (true);
+insert to authenticated WITH CHECK (
+        auth.uid() = id
+        AND role = 'user'::user_role
+    );
 create policy "Enable read access for all users" on "public"."user_profile" as permissive for
 select to public using ((auth.uid() = id));
 -- 
