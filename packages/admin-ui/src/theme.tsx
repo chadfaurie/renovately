@@ -1,6 +1,6 @@
 import { Theme } from "@mui/material";
 import merge from "lodash.merge";
-import { nanoLightTheme } from "react-admin";
+import { radiantDarkTheme } from "react-admin";
 
 const overrides: Partial<Theme> = {
   components: {
@@ -27,12 +27,12 @@ const overrides: Partial<Theme> = {
         fullWidth: true,
       },
     },
-    MuiSelect: {
-      defaultProps: {
-        fullWidth: true,
-      },
-    },
+    // MuiSelect: {
+    //   defaultProps: {
+    //     fullWidth: true,
+    //   },
+    // },
   },
 };
 
-export const theme: Theme = merge(nanoLightTheme, overrides);
+export const theme: Theme = merge(radiantDarkTheme, overrides);
