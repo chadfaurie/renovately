@@ -77,10 +77,10 @@ CREATE TABLE "public"."area" (
     "modified_by" uuid NOT NULL default auth.uid(),
     "deleted_at" timestamp with time zone,
     "property_id" uuid NOT NULL,
-    "area_name" character varying NOT NULL,
-    "area_type" character varying NOT NULL,
-    "area_dimensions" text,
-    "area_description" text,
+    "name" character varying NOT NULL,
+    "type" character varying NOT NULL,
+    "dimensions" text,
+    "description" text,
     "renovation_status" character varying,
     "renovation_requirements" text,
     "before_images" text [],
@@ -132,7 +132,7 @@ create table "public"."partner" (
     "deleted_at" timestamp with time zone,
     "name" character varying not null,
     "description" text,
-    "partner_type" partner_type not null
+    "type" partner_type not null
 );
 alter table "public"."partner" enable row level security;
 CREATE UNIQUE INDEX "partner_pkey" ON public."partner" USING btree (id);

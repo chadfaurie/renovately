@@ -5,11 +5,11 @@ import { PropertyReferenceField } from "../../references";
 export const AreaList = () => (
   <List>
     <Datagrid rowClick="show">
-      <TextField source="area_name" />
-      <ChipField source="area_type" />
+      <TextField source="name" />
+      <ChipField source="type" />
       <PropertyReferenceField source="property_id" />
-      <TextField source="area_dimensions" />
-      <TextField source="area_description" />
+      <TextField source="dimensions" />
+      <TextField source="description" />
       <TextField source="renovation_status" />
       <TextField source="renovation_requirements" />
       <TextField source="before_images" />

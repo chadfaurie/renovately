@@ -28,7 +28,7 @@ export const MultiLinkField = <T extends string = string>({
   }, [relatedSource, entity]);
 
   return (
-    <ReferenceField {...rest} reference={entity}>
+    <ReferenceField reference={entity} link="show" {...rest}>
       <TextField source={relatedEntitySource} />
     </ReferenceField>
   );

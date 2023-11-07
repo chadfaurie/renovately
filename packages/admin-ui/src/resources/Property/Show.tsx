@@ -22,8 +22,8 @@ export const PropertyShow = () => (
       <Tab label="Areas">
         <ReferenceManyField label={false} reference="area" source="id" target="property_id">
           <Datagrid bulkActionButtons={false}>
-            <TextField source="area_name" />
-            <ChipField source="area_type" />
+            <TextField source="name" />
+            <ChipField source="type" />
             <ShowButton />
           </Datagrid>
         </ReferenceManyField>

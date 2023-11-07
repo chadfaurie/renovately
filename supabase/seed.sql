@@ -451,255 +451,281 @@ VALUES (
 -- Data for Name: property; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
--- INSERT INTO "public"."property" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"nickname",
--- 		"address",
--- 		"ownership_type",
--- 		"access_restrictions"
--- 	)
--- VALUES (
--- 		'fbecec1c-e450-4b40-8506-6d64365f5dff',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Home',
--- 		'15c Indian Road Kenilworth',
--- 		'OWNER',
--- 		'NONE'
--- 	);
+INSERT INTO "public"."property" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"nickname",
+		"address",
+		"ownership_type",
+		"access_restrictions"
+	)
+VALUES (
+		'69370b5b-a2eb-47d6-898b-3ea861594d34',
+		'2023-11-07 07:19:48.22188+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:19:48.22188+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Home',
+		'15c Indian Road',
+		'OWNER',
+		'NONE'
+	);
 --
 -- Data for Name: area; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
--- INSERT INTO "public"."area" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"property_id",
--- 		"area_name",
--- 		"area_type",
--- 		"area_dimensions",
--- 		"area_description",
--- 		"renovation_status",
--- 		"renovation_requirements",
--- 		"before_images",
--- 		"after_images",
--- 		"current_condition",
--- 		"desired_features",
--- 		"materials_needed"
--- 	)
--- VALUES (
--- 		'9986a9b8-2432-4e8c-8276-dfe4b1e5756d',
--- 		'2023-11-04 09:02:52.328137+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'fbecec1c-e450-4b40-8506-6d64365f5dff',
--- 		'Bathroom',
--- 		'BATHROOM',
--- 		'4mx6m',
--- 		'Main Bathroom',
--- 		'Things?',
--- 		'Thnings?',
--- 		NULL,
--- 		NULL,
--- 		NULL,
--- 		NULL,
--- 		NULL
--- 	);
+INSERT INTO "public"."area" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"property_id",
+		"name",
+		"type",
+		"dimensions",
+		"description",
+		"renovation_status",
+		"renovation_requirements",
+		"before_images",
+		"after_images",
+		"current_condition",
+		"desired_features",
+		"materials_needed"
+	)
+VALUES (
+		'29703a6f-c527-4c4d-a510-65bebba2a7ce',
+		'2023-11-07 07:30:35.117943+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:30:35.117943+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'69370b5b-a2eb-47d6-898b-3ea861594d34',
+		'Bathroom',
+		'BATHROOM',
+		'3x3',
+		'Bathroom',
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL
+	),
+	(
+		'ded73341-a324-4fcd-b0a1-20755d166c82',
+		'2023-11-07 07:31:00.998029+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:31:00.998029+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'69370b5b-a2eb-47d6-898b-3ea861594d34',
+		'Kitchen',
+		'KITCHEN',
+		'3x5.4',
+		'Kitchen',
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL,
+		NULL
+	);
 --
 -- Data for Name: audit_trail; Type: TABLE DATA; Schema: public; Owner: postgres
 --
+
 --
 -- Data for Name: partner; Type: TABLE DATA; Schema: public; Owner: postgres
 --
--- INSERT INTO "public"."partner" (
--- "id",
--- "created_at",
--- "created_by",
--- "modified_at",
--- "modified_by",
--- "name",
--- "description",
--- "partner_type"
--- )
--- VALUES (
--- 		'2091ae30-d7bc-41c4-856c-8f178d9f808b',
--- 		'2023-11-04 08:43:15.815306+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Bob The Builder',
--- 		'Builder',
--- 		'contractor'
--- 	),
--- 	(
--- 		'8e3d865f-633e-4584-9c83-e5b6c64e125d',
--- 		'2023-11-04 08:51:05.183938+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'Tiles',
--- 		'Tiles',
--- 		'supplier'
--- 	);
--- --
--- -- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: postgres
--- --
--- INSERT INTO "public"."project" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"title",
--- 		"description",
--- 		"start_date",
--- 		"estimated_end_date",
--- 		"status",
--- 		"property_id"
--- 	)
--- VALUES (
--- 		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
--- 		'2023-11-04 08:39:12.223905+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Bathroom Renovation 1',
--- 		'Main Bathroom Renovation',
--- 		'2023-01-01',
--- 		'2023-12-31',
--- 		'BUSY',
--- 		'fbecec1c-e450-4b40-8506-6d64365f5dff'
--- 	),
--- 	(
--- 		'76da9b6a-0c57-4d25-9090-c4cb439ec251',
--- 		'2023-11-04 08:53:57.303365+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Indoor Painting',
--- 		'Paint Indoors',
--- 		'2023-12-31',
--- 		'2023-12-31',
--- 		'PLANNING',
--- 		'fbecec1c-e450-4b40-8506-6d64365f5dff'
--- 	);
--- --
--- -- Data for Name: partner_project_link; Type: TABLE DATA; Schema: public; Owner: postgres
--- --
--- --
--- -- Data for Name: progress_updates; Type: TABLE DATA; Schema: public; Owner: postgres
--- --
--- INSERT INTO "public"."progress_updates" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"update_description",
--- 		"related_entity_id",
--- 		"update_type"
--- 	)
--- VALUES (
--- 		'10b308c5-b38b-4054-ba36-7af05a481d4c',
--- 		'2023-11-04 09:04:50.340946+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
--- 		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
--- 		'project'
--- 	),
--- 	(
--- 		'c33d7a5b-56c1-45d4-b5cd-2deb4764d8e2',
--- 		'2023-11-04 09:21:43.919502+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Test',
--- 		'0d3998c0-c300-4fb7-9a00-a219bf7f9ead',
--- 		'project'
--- 	);
--- --
--- -- Data for Name: progress_update_images; Type: TABLE DATA; Schema: public; Owner: postgres
--- --
--- INSERT INTO "public"."progress_update_images" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"image_url",
--- 		"progress_update_id"
--- 	)
--- VALUES (
--- 		'6cda5ce6-b96c-4459-995c-0d373e464d7f',
--- 		'2023-11-04 09:07:22.251902+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'http://127.0.0.1:54321/storage/v1/object/public/progress_update_images/',
--- 		'10b308c5-b38b-4054-ba36-7af05a481d4c'
--- 	);
--- --
--- -- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: postgres
--- --
--- INSERT INTO "public"."task" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"description",
--- 		"to_be_completed_by",
--- 		"status",
--- 		"priority",
--- 		"project_id"
--- 	)
--- VALUES (
--- 		'a4d6a19d-f2b4-4c72-ac2c-dca0c0d40e33',
--- 		'2023-11-04 09:12:28.62943+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Test',
--- 		'8e3d865f-633e-4584-9c83-e5b6c64e125d',
--- 		'DONE',
--- 		1,
--- 		'76da9b6a-0c57-4d25-9090-c4cb439ec251'
--- 	);
--- --
--- -- Data for Name: user_profile; Type: TABLE DATA; Schema: public; Owner: postgres
--- --
--- INSERT INTO "public"."user_profile" (
--- 		"id",
--- 		"created_at",
--- 		"created_by",
--- 		"modified_at",
--- 		"modified_by",
--- 		"first_name",
--- 		"last_name",
--- 		"email"
--- 	)
--- VALUES (
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:34:55.87733+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'2023-11-04 08:35:08.396635+00',
--- 		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
--- 		'Admin',
--- 		'Admin',
--- 		'admin@admin.com'
--- 	);
+
+INSERT INTO "public"."partner" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"name",
+		"description",
+		"type"
+	)
+VALUES (
+		'cd9ebfb0-8aae-4f69-b009-33c4e40bdc89',
+		'2023-11-07 07:29:37.213025+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:29:37.213025+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Bob (The Builder)',
+		'Builder Guy',
+		'contractor'
+	),
+	(
+		'35f714da-c9e3-4f27-b80f-f2d8813091aa',
+		'2023-11-07 07:29:52.193123+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:29:52.193123+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Tiles R us',
+		'Tiles and Junk',
+		'supplier'
+	);
+--
+-- Data for Name: project; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."project" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"title",
+		"description",
+		"start_date",
+		"estimated_end_date",
+		"status",
+		"property_id"
+	)
+VALUES (
+		'246c7cb6-4299-4f46-ab88-c18f0cdb6322',
+		'2023-11-07 07:21:40.053515+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:21:40.053515+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Bathroom Renovation 1',
+		'Replace Towel Rails',
+		'2023-12-01',
+		'2023-12-31',
+		'PLANNING',
+		'69370b5b-a2eb-47d6-898b-3ea861594d34'
+	);
+--
+-- Data for Name: partner_project_link; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+--
+-- Data for Name: progress_updates; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."progress_updates" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"update_description",
+		"related_entity_id",
+		"update_type"
+	)
+VALUES (
+		'e51932b6-81d2-4050-82ee-f86a1e306d6e',
+		'2023-11-07 07:36:03.374255+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:36:03.374255+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Rubber Duck Installed',
+		'246c7cb6-4299-4f46-ab88-c18f0cdb6322',
+		'project'
+	),
+	(
+		'd8e53316-9c9e-4c53-9acd-80fca1310041',
+		'2023-11-07 07:41:40.307249+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:41:40.307249+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Area Test',
+		'ded73341-a324-4fcd-b0a1-20755d166c82',
+		'area'
+	),
+	(
+		'924daf84-75bf-4daa-b454-2cef32b012f5',
+		'2023-11-07 07:43:27.875659+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:43:27.875659+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Task Test',
+		'ad96113f-dd90-4403-8763-7fc65ae6c8cf',
+		'task'
+	);
+--
+-- Data for Name: progress_update_images; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+--
+-- Data for Name: task; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."task" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"description",
+		"to_be_completed_by",
+		"status",
+		"priority",
+		"project_id"
+	)
+VALUES (
+		'ad96113f-dd90-4403-8763-7fc65ae6c8cf',
+		'2023-11-07 07:38:35.637338+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:38:35.637338+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Testing 1234',
+		'cd9ebfb0-8aae-4f69-b009-33c4e40bdc89',
+		'PENDING',
+		1,
+		'246c7cb6-4299-4f46-ab88-c18f0cdb6322'
+	);
+--
+-- Data for Name: user_profile; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+INSERT INTO "public"."user_profile" (
+		"id",
+		"created_at",
+		"created_by",
+		"modified_at",
+		"modified_by",
+		"deleted_at",
+		"first_name",
+		"last_name",
+		"email",
+		"role"
+	)
+VALUES (
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:28:58.909329+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		'2023-11-07 07:28:58.909329+00',
+		'ad0de4fb-143f-4458-89bb-913e54c6eb53',
+		NULL,
+		'Admin',
+		'Admin',
+		'admin@admin.com',
+		'admin'
+	);
 --
 -- Data for Name: user_project_role_link; Type: TABLE DATA; Schema: public; Owner: postgres
 --
@@ -721,7 +747,8 @@ INSERT INTO "storage"."buckets" (
 		"public",
 		"avif_autodetection",
 		"file_size_limit",
-		"allowed_mime_types"
+		"allowed_mime_types",
+		"owner_id"
 	)
 VALUES (
 		'progress_update_images',
@@ -731,6 +758,7 @@ VALUES (
 		'2023-11-04 06:55:08.54898+00',
 		false,
 		false,
+		NULL,
 		NULL,
 		NULL
 	);
@@ -747,7 +775,8 @@ INSERT INTO "storage"."objects" (
 		"updated_at",
 		"last_accessed_at",
 		"metadata",
-		"version"
+		"version",
+		"owner_id"
 	)
 VALUES (
 		'059a30a9-5591-4180-a7b0-dd365ab5069b',
@@ -758,7 +787,8 @@ VALUES (
 		'2023-11-04 07:01:11.340637+00',
 		'2023-11-04 07:01:11.340637+00',
 		'{"eTag": "\"e995dddcfc716afeb2aba4ff78d22f49\"", "size": 246994, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2023-11-04T07:01:11.332Z", "contentLength": 246994, "httpStatusCode": 200}',
-		'7117a725-45d3-4306-aa74-77a4a68f75d0'
+		'7117a725-45d3-4306-aa74-77a4a68f75d0',
+		NULL
 	),
 	(
 		'e449a4a6-33c8-4c09-8c85-c4231620e00c',
@@ -769,7 +799,8 @@ VALUES (
 		'2023-11-04 07:03:42.845032+00',
 		'2023-11-04 07:03:42.845032+00',
 		'{"eTag": "\"e995dddcfc716afeb2aba4ff78d22f49\"", "size": 246994, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2023-11-04T07:03:42.832Z", "contentLength": 246994, "httpStatusCode": 200}',
-		'cad7ac52-244e-4008-97ff-9215b4ecb994'
+		'cad7ac52-244e-4008-97ff-9215b4ecb994',
+		NULL
 	),
 	(
 		'dc9d18e1-ccbe-4115-84a1-bb78038e90d7',
@@ -780,7 +811,8 @@ VALUES (
 		'2023-11-04 07:05:21.027234+00',
 		'2023-11-04 07:05:21.027234+00',
 		'{"eTag": "\"e995dddcfc716afeb2aba4ff78d22f49\"", "size": 246994, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2023-11-04T07:05:21.021Z", "contentLength": 246994, "httpStatusCode": 200}',
-		'95ee3764-66d5-4c39-96e0-f983a6a4563b'
+		'95ee3764-66d5-4c39-96e0-f983a6a4563b',
+		NULL
 	),
 	(
 		'853ea6f9-3706-4ae9-9e08-03ee4049fcf6',
@@ -791,7 +823,8 @@ VALUES (
 		'2023-11-04 07:06:45.33667+00',
 		'2023-11-04 07:06:45.33667+00',
 		'{"eTag": "\"e995dddcfc716afeb2aba4ff78d22f49\"", "size": 246994, "mimetype": "image/jpeg", "cacheControl": "max-age=3600", "lastModified": "2023-11-04T07:06:45.331Z", "contentLength": 246994, "httpStatusCode": 200}',
-		'762dda8a-b59b-478b-ab5a-8c546cef33c5'
+		'762dda8a-b59b-478b-ab5a-8c546cef33c5',
+		NULL
 	);
 --
 -- Data for Name: hooks; Type: TABLE DATA; Schema: supabase_functions; Owner: supabase_functions_admin

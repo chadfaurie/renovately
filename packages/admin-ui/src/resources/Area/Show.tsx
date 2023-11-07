@@ -8,10 +8,10 @@ export const AreaShow = () => (
     <TabbedShowLayout>
       <Tab label="Summary">
         <PropertyReferenceField source="property_id" />
-        <TextField source="area_name" />
-        <ChipField source="area_type" />
-        <TextField source="area_dimensions" />
-        <TextField source="area_description" />
+        <TextField source="name" />
+        <ChipField source="type" />
+        <TextField source="dimensions" />
+        <TextField source="description" />
         <TextField source="renovation_status" />
         <TextField source="renovation_requirements" />
         <TextField source="before_images" />

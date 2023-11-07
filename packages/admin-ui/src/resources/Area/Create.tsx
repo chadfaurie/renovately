@@ -7,11 +7,11 @@ export const AreaCreate = () => (
   <Create redirect="show">
     <SimpleForm>
       <PropertyReferenceField source="property_id" />
-      <TextInput source="area_name" />
-      <TextInput source="area_description" />
+      <TextInput source="name" />
+      <TextInput source="description" />
       <PropertyReferenceInput source="property_id" />
-      <TextInput source="area_type" />
-      <TextInput source="area_dimensions" />
+      <TextInput source="type" />
+      <TextInput source="dimensions" />
       <TextInput source="renovation_status" />
       <TextInput source="renovation_requirements" />
       <TextInput source="before_images" />

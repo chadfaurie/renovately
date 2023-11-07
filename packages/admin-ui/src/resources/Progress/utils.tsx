@@ -17,6 +17,6 @@ export const UpdateTypeSelect = () => {
 
 export const relatedSourceMap: Record<UpdateType, string> = {
   project: "title",
-  area: "area_name",
+  area: "name",
   task: "description",
 };
