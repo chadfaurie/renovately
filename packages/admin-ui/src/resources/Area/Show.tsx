@@ -21,7 +21,7 @@ export const AreaShow = () => (
         <TextField source="materials_needed" />
       </Tab>
       <Tab label="Updates">
-        <UpdatesTab update_type="area" />
+        <UpdatesTab type="area" />
       </Tab>
     </TabbedShowLayout>
   </Show>

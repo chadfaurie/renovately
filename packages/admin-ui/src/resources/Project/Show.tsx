@@ -15,7 +15,7 @@ export const ProjectShow = () => (
         <PropertyReferenceField source="property_id" />
       </Tab>
       <Tab label="Updates">
-        <UpdatesTab update_type="area" />
+        <UpdatesTab type="area" />
       </Tab>
     </TabbedShowLayout>
   </Show>

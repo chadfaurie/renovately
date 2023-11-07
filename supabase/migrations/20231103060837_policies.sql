@@ -54,9 +54,9 @@ create policy "Enable insert for authenticated users only" on "public"."area" as
 insert to authenticated with check (true);
 -- 
 -- Progress Updates
-create policy "Enable read access for all users" on "public"."progress_updates" as permissive for
+create policy "Enable read access for all users" on "public"."progress" as permissive for
 select to public using (true);
-create policy "Enable insert for authenticated users only" on "public"."progress_updates" as permissive for
+create policy "Enable insert for authenticated users only" on "public"."progress" as permissive for
 insert to authenticated with check (true);
 -- 
 -- Progress Updates Images

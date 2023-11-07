@@ -14,7 +14,7 @@ export const TaskShow = () => (
         <ProjectReferenceField source="project_id" />
       </Tab>
       <Tab label="Updates">
-        <UpdatesTab update_type="task" />
+        <UpdatesTab type="task" />
       </Tab>
     </TabbedShowLayout>
   </Show>

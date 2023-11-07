@@ -1,22 +1,22 @@
 import { ReferenceManyField, Datagrid, TextField, DateField, ShowButton } from "react-admin";
 
 interface Props {
-  update_type: string;
+  type: string;
 }
 
-export const UpdatesTab = ({ update_type }: Props) => {
+export const UpdatesTab = ({ type }: Props) => {
   return (
     <ReferenceManyField
       label={false}
-      reference="progress_updates"
+      reference="progress"
       source="id"
       target="related_entity_id"
       filter={{
-        update_type,
+        type,
       }}
     >
       <Datagrid bulkActionButtons={false}>
-        <TextField source="update_description" />
+        <TextField source="description" />
         <DateField source="created_at" />
         <ShowButton />
       </Datagrid>

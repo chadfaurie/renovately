@@ -6,9 +6,9 @@ import { MultiLinkInput } from "../../components/react-admin";
 export const ProgressUpdateEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput source="update_description" />
+      <TextInput source="description" />
       <UpdateTypeSelect />
-      <MultiLinkInput source="related_entity_id" referenceField="update_type" relatedSource={relatedSourceMap} />
+      <MultiLinkInput source="related_entity_id" referenceField="type" relatedSource={relatedSourceMap} />
     </SimpleForm>
   </Edit>
 );

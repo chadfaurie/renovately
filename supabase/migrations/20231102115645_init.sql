@@ -232,23 +232,23 @@ ADD CONSTRAINT "user_property_role_link_property_id_fkey" FOREIGN KEY ("property
 -- 
 -- Progress Updates
 CREATE TYPE update_type AS ENUM ('project', 'task', 'area');
-CREATE TABLE "public"."progress_updates" (
+CREATE TABLE "public"."progress" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
     "modified_at" timestamp with time zone not null default now(),
     "modified_by" uuid NOT NULL default auth.uid(),
     "deleted_at" timestamp with time zone,
-    "update_description" text NOT NULL,
-    -- This could be project, task, or room ID
-    "related_entity_id" uuid NOT NULL,
+    "description" text NOT NULL,
     -- Enum: 'Project', 'Task', 'Room'
-    "update_type" update_type
+    "type" update_type,
+    -- This could be project, task, or room ID
+    "related_entity_id" uuid NOT NULL
 );
-ALTER TABLE "public"."progress_updates" ENABLE ROW LEVEL SECURITY;
-CREATE UNIQUE INDEX progress_updates_pkey ON public.progress_updates USING btree (id);
-ALTER TABLE "public"."progress_updates"
-ADD CONSTRAINT "progress_updates_pkey" PRIMARY KEY USING INDEX "progress_updates_pkey";
+ALTER TABLE "public"."progress" ENABLE ROW LEVEL SECURITY;
+CREATE UNIQUE INDEX progress_pkey ON public.progress USING btree (id);
+ALTER TABLE "public"."progress"
+ADD CONSTRAINT "progress_pkey" PRIMARY KEY USING INDEX "progress_pkey";
 -- 
 -- Images
 CREATE TABLE "public"."progress_update_images" (
@@ -266,4 +266,4 @@ CREATE UNIQUE INDEX progress_update_images_pkey ON public.progress_update_images
 ALTER TABLE "public"."progress_update_images"
 ADD CONSTRAINT "progress_update_images_pkey" PRIMARY KEY USING INDEX "progress_update_images_pkey";
 ALTER TABLE "public"."progress_update_images"
-ADD CONSTRAINT "progress_update_images_progress_update_id_fkey" FOREIGN KEY (progress_update_id) REFERENCES progress_updates(id);
+ADD CONSTRAINT "progress_update_images_progress_update_id_fkey" FOREIGN KEY (progress_update_id) REFERENCES progress(id);

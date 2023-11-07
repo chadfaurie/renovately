@@ -65,7 +65,7 @@ export const MyAdmin = () => (
       />
       <Resource name="task" icon={TaskIcon} list={TaskList} show={TaskShow} edit={TaskEdit} create={TaskCreate} />
       <Resource
-        name="progress_updates"
+        name="progress"
         icon={ProgressUpdateIcon}
         list={ProgressUpdateList}
         show={ProgressUpdateShow}

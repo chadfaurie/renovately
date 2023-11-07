@@ -617,19 +617,19 @@ VALUES (
 --
 
 --
--- Data for Name: progress_updates; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: progress; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO "public"."progress_updates" (
+INSERT INTO "public"."progress" (
 		"id",
 		"created_at",
 		"created_by",
 		"modified_at",
 		"modified_by",
 		"deleted_at",
-		"update_description",
+		"description",
 		"related_entity_id",
-		"update_type"
+		"type"
 	)
 VALUES (
 		'e51932b6-81d2-4050-82ee-f86a1e306d6e',
