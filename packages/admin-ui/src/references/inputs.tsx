@@ -8,7 +8,7 @@ export type RefInputProps = Partial<ComponentProps<typeof ReferenceInput>> & {
 export const PropertyReferenceInput = (props: RefInputProps) => {
   return (
     <ReferenceInput reference="property" {...props}>
-      <AutocompleteInput />
+      <AutocompleteInput optionText="address" />
     </ReferenceInput>
   );
 };
@@ -16,7 +16,7 @@ export const PropertyReferenceInput = (props: RefInputProps) => {
 export const ProjectReferenceInput = (props: RefInputProps) => {
   return (
     <ReferenceInput reference="project" {...props}>
-      <AutocompleteInput />
+      <AutocompleteInput optionText="title" />
     </ReferenceInput>
   );
 };
@@ -24,7 +24,7 @@ export const ProjectReferenceInput = (props: RefInputProps) => {
 export const PartnerReferenceInput = (props: RefInputProps) => {
   return (
     <ReferenceInput reference="partner" {...props}>
-      <AutocompleteInput />
+      <AutocompleteInput optionText="name" />
     </ReferenceInput>
   );
 };

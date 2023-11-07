@@ -46,6 +46,7 @@ export const MyAdmin = () => (
         edit={PropertyEdit}
         create={PropertyCreate}
       />
+      <Resource name="area" icon={AreaIcon} list={AreaList} show={AreaShow} edit={AreaEdit} create={AreaCreate} />
       <Resource
         name="project"
         icon={ProjectIcon}
@@ -63,7 +64,6 @@ export const MyAdmin = () => (
         create={PartnerCreate}
       />
       <Resource name="task" icon={TaskIcon} list={TaskList} show={TaskShow} edit={TaskEdit} create={TaskCreate} />
-      <Resource name="area" icon={AreaIcon} list={AreaList} show={AreaShow} edit={AreaEdit} create={AreaCreate} />
       <Resource
         name="progress_updates"
         icon={ProgressUpdateIcon}

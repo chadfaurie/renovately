@@ -18,23 +18,6 @@ ADD CONSTRAINT "audit_trail_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES aut
 -- Index for user_id and entity_id could be beneficial for performance
 CREATE INDEX "audit_trail_user_id_idx" ON "public"."audit_trail" USING btree ("user_id");
 CREATE INDEX "audit_trail_entity_id_idx" ON "public"."audit_trail" USING btree ("entity_id");
--- 
--- Users
-create table "public"."user_profile" (
-    "id" uuid not null,
-    "created_at" timestamp with time zone not null default now(),
-    "created_by" uuid NOT NULL default auth.uid(),
-    "first_name" character varying,
-    "last_name" character varying,
-    "email" character varying
-);
-alter table "public"."user_profile" enable row level security;
-CREATE UNIQUE INDEX user_profile_pkey ON public.user_profile USING btree (id);
-alter table "public"."user_profile"
-add constraint "user_profile_pkey" PRIMARY KEY using index "user_profile_pkey";
-alter table "public"."user_profile"
-add constraint "user_profile_id_fkey" FOREIGN KEY (id) REFERENCES auth.users(id) not valid;
-alter table "public"."user_profile" validate constraint "user_profile_id_fkey";
 --
 -- Roles
 CREATE TYPE user_role AS ENUM (
@@ -46,11 +29,35 @@ CREATE TYPE user_role AS ENUM (
     'user'
 );
 -- 
+-- Users
+create table "public"."user_profile" (
+    "id" uuid not null,
+    "created_at" timestamp with time zone not null default now(),
+    "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
+    "first_name" character varying,
+    "last_name" character varying,
+    "email" character varying,
+    "role" user_role not null DEFAULT 'user'::user_role
+);
+alter table "public"."user_profile" enable row level security;
+CREATE UNIQUE INDEX user_profile_pkey ON public.user_profile USING btree (id);
+alter table "public"."user_profile"
+add constraint "user_profile_pkey" PRIMARY KEY using index "user_profile_pkey";
+alter table "public"."user_profile"
+add constraint "user_profile_id_fkey" FOREIGN KEY (id) REFERENCES auth.users(id) not valid;
+alter table "public"."user_profile" validate constraint "user_profile_id_fkey";
+-- 
 -- Properties
 create table "public"."property" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "nickname" character varying,
     "address" character varying not null,
     "ownership_type" character varying,
@@ -64,8 +71,11 @@ add constraint "property_pkey" PRIMARY KEY using index "property_pkey";
 -- Areas
 CREATE TABLE "public"."area" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
-    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "property_id" uuid NOT NULL,
     "area_name" character varying NOT NULL,
     "area_type" character varying NOT NULL,
@@ -93,6 +103,9 @@ create table "public"."project" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "title" character varying not null,
     "description" text,
     "start_date" date,
@@ -114,6 +127,9 @@ create table "public"."partner" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "name" character varying not null,
     "description" text,
     "partner_type" partner_type not null
@@ -128,6 +144,9 @@ create table "public"."partner_project_link" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "partner_id" uuid,
     "project_id" uuid,
     "assigned_date" date,
@@ -149,6 +168,9 @@ create table "public"."task" (
     "id" uuid not null default gen_random_uuid(),
     "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "description" text,
     "to_be_completed_by" uuid,
     "status" character varying,
@@ -169,8 +191,11 @@ alter table "public"."task" validate constraint "task_to_be_completed_by_fkey";
 -- User Project Role Link
 CREATE TABLE "public"."user_project_role_link" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
-    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "user_id" uuid NOT NULL,
     "project_id" uuid NOT NULL,
     "role" user_role NOT NULL,
@@ -187,8 +212,11 @@ ADD CONSTRAINT "user_project_role_link_project_id_fkey" FOREIGN KEY ("project_id
 -- User Property Role Link
 CREATE TABLE "public"."user_property_role_link" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
-    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "user_id" uuid NOT NULL,
     "property_id" uuid NOT NULL,
     "role" user_role NOT NULL,
@@ -206,8 +234,11 @@ ADD CONSTRAINT "user_property_role_link_property_id_fkey" FOREIGN KEY ("property
 CREATE TYPE update_type AS ENUM ('project', 'task', 'area');
 CREATE TABLE "public"."progress_updates" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
-    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "update_description" text NOT NULL,
     -- This could be project, task, or room ID
     "related_entity_id" uuid NOT NULL,
@@ -222,8 +253,11 @@ ADD CONSTRAINT "progress_updates_pkey" PRIMARY KEY USING INDEX "progress_updates
 -- Images
 CREATE TABLE "public"."progress_update_images" (
     "id" uuid NOT NULL DEFAULT gen_random_uuid(),
-    "created_at" timestamp with time zone NOT NULL DEFAULT now(),
+    "created_at" timestamp with time zone not null default now(),
     "created_by" uuid NOT NULL default auth.uid(),
+    "modified_at" timestamp with time zone not null default now(),
+    "modified_by" uuid NOT NULL default auth.uid(),
+    "deleted_at" timestamp with time zone,
     "image_url" text NOT NULL,
     "progress_update_id" uuid NOT NULL -- ID of the progress update
 );
