@@ -13,11 +13,6 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  AWS_REGION: eu-west-1 # set this to your preferred AWS region, e.g. us-west-1
-  AWS_ACCESS_KEY_NAME: AWS_ACCESS_KEY_ID_UATU
-  AWS_SECRET_ACCESS_KEY_NAME: AWS_SECRET_ACCESS_KEY_UATU
-
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   setup:
@@ -117,6 +112,13 @@ jobs:
       - uses: supabase/setup-cli@v1
         with:
           version: latest
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        with:
+          # fetch-depth: 0
+          persist-credentials: false
+
       - name: Link Supabase Project
         run: supabase link --project-ref $SUPABASE_PROJECT_ID
       - name: Deploy Supabase Database

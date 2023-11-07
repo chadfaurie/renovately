@@ -9,8 +9,8 @@
       "path": "supabase/functions"
     },
     {
-      "name": "app",
-      "path": "packages/renovately-app"
+      "name": "admin-ui",
+      "path": "packages/admin-ui"
     }
   ],
   "settings": {
