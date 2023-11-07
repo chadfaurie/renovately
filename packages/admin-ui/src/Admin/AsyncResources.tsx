@@ -157,6 +157,8 @@ export const MyAdmin = () => (
         edit={UserProfileEdit}
         create={UserProfileCreate}
       />
+      <Resource name="user_property_role_link" />
+      <Resource name="user_project_role_link" />
     </Admin>
   </BrowserRouter>
 );

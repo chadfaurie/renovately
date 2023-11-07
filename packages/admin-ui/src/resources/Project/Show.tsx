@@ -1,7 +1,17 @@
-import { ChipField, DateField, Show, Tab, TabbedShowLayout, TextField } from "react-admin";
+import {
+  ChipField,
+  Datagrid,
+  DateField,
+  DeleteWithConfirmButton,
+  ReferenceManyField,
+  Show,
+  Tab,
+  TabbedShowLayout,
+  TextField,
+} from "react-admin";
 
 import { UpdatesTab } from "../../components/generic";
-import { PropertyReferenceField } from "../../references";
+import { ProjectReferenceField, PropertyReferenceField } from "../../references";
 
 export const ProjectShow = () => (
   <Show>
@@ -16,6 +26,15 @@ export const ProjectShow = () => (
       </Tab>
       <Tab label="Updates">
         <UpdatesTab type="area" />
+      </Tab>
+      <Tab label="Access">
+        <ReferenceManyField label={false} reference="user_project_role_link" source="id" target="project_id">
+          <Datagrid bulkActionButtons={false}>
+            <ProjectReferenceField source="project_id" />
+            <ChipField source="role" />
+            <DeleteWithConfirmButton />
+          </Datagrid>
+        </ReferenceManyField>
       </Tab>
     </TabbedShowLayout>
   </Show>

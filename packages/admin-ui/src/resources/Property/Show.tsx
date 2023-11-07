@@ -8,7 +8,10 @@ import {
   DateField,
   ShowButton,
   ChipField,
+  DeleteWithConfirmButton,
 } from "react-admin";
+
+import { PropertyReferenceField } from "../../references";
 
 export const PropertyShow = () => (
   <Show>
@@ -36,6 +39,15 @@ export const PropertyShow = () => (
             <DateField source="estimated_end_date" />
             <ChipField source="status" />
             <ShowButton />
+          </Datagrid>
+        </ReferenceManyField>
+      </Tab>
+      <Tab label="Access">
+        <ReferenceManyField label={false} reference="user_property_role_link" source="id" target="property_id">
+          <Datagrid bulkActionButtons={false}>
+            <PropertyReferenceField source="property_id" />
+            <ChipField source="role" />
+            <DeleteWithConfirmButton />
           </Datagrid>
         </ReferenceManyField>
       </Tab>
