@@ -1,15 +1,6 @@
-import {
-  ChipField,
-  Datagrid,
-  DateField,
-  ReferenceManyField,
-  Show,
-  ShowButton,
-  Tab,
-  TabbedShowLayout,
-  TextField,
-} from "react-admin";
+import { ChipField, DateField, Show, Tab, TabbedShowLayout, TextField } from "react-admin";
 
+import { UpdatesTab } from "../../components/generic";
 import { PropertyReferenceField } from "../../references";
 
 export const ProjectShow = () => (
@@ -24,21 +15,7 @@ export const ProjectShow = () => (
         <PropertyReferenceField source="property_id" />
       </Tab>
       <Tab label="Updates">
-        <ReferenceManyField
-          label={false}
-          reference="progress_updates"
-          source="id"
-          target="related_entity_id"
-          filter={{
-            update_type: "project",
-          }}
-        >
-          <Datagrid bulkActionButtons={false}>
-            <TextField source="update_description" />
-            <DateField source="created_at" />
-            <ShowButton />
-          </Datagrid>
-        </ReferenceManyField>
+        <UpdatesTab update_type="area" />
       </Tab>
     </TabbedShowLayout>
   </Show>
