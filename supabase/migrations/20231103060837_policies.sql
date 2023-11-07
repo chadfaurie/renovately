@@ -1,13 +1,21 @@
 -- 
 -- Audit Trails
 create policy "Enable insert for authenticated users only" on "public"."audit_trail" as permissive for
-insert to authenticated with check (true);
+insert to authenticated WITH CHECK (auth.uid() = user_id);
 -- 
 -- User Profile
 create policy "Enable insert for authenticated users only" on "public"."user_profile" as permissive for
 insert to authenticated WITH CHECK (
         auth.uid() = id
         AND role = 'user'::user_role
+    );
+CREATE POLICY "Enable Update for Owners" ON public.user_profile FOR
+UPDATE TO authenticated USING ((auth.uid() = id)) WITH CHECK (
+        auth.uid() = id
+        AND (
+            OLD.role IS NOT DISTINCT
+            FROM NEW.role
+        )
     );
 create policy "Enable read access for all users" on "public"."user_profile" as permissive for
 select to public using ((auth.uid() = id));
@@ -17,6 +25,10 @@ create policy "Enable read access for all users" on "public"."project" as permis
 select to public using (true);
 create policy "Enable insert for authenticated users only" on "public"."project" as permissive for
 insert to authenticated with check (true);
+-- 
+-- User Project Role Link
+create policy "Enable read access for all users" on "public"."user_project_role_link" as permissive for
+select to public using (true);
 -- 
 -- Property
 create policy "Enable read access for all users" on "public"."property" as permissive for
@@ -41,10 +53,6 @@ create policy "Enable read access for all users" on "public"."task" as permissiv
 select to public using (true);
 create policy "Enable insert for authenticated users only" on "public"."task" as permissive for
 insert to authenticated with check (true);
--- 
--- User Project Role Link
-create policy "Enable read access for all users" on "public"."user_project_role_link" as permissive for
-select to public using (true);
 -- 
 -- User Property Role Link
 create policy "Enable read access for all users" on "public"."user_property_role_link" as permissive for
