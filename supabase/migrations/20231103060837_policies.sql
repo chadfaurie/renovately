@@ -12,10 +12,7 @@ insert to authenticated WITH CHECK (
 CREATE POLICY "Enable Update for Owners" ON public.user_profile FOR
 UPDATE TO authenticated USING ((auth.uid() = id)) WITH CHECK (
         auth.uid() = id
-        AND (
-            OLD.role IS NOT DISTINCT
-            FROM NEW.role
-        )
+        AND role = 'user'::user_role
     );
 create policy "Enable read access for all users" on "public"."user_profile" as permissive for
 select to public using ((auth.uid() = id));
