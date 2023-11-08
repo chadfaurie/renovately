@@ -8,7 +8,7 @@ import {
   PersonAdd as UserIcon,
 } from "@mui/icons-material";
 import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
-import { AdminUI, Resource, CustomRoutes, Loading } from "react-admin";
+import { AdminUI, Resource, CustomRoutes, Loading, usePermissions } from "react-admin";
 import { Route } from "react-router-dom";
 
 import Dashboard from "../dashboard";
@@ -29,6 +29,7 @@ import { TaskCreate, TaskEdit, TaskList, TaskShow } from "../resources/Task";
 import { UserProfileCreate, UserProfileEdit, UserProfileList, UserProfileShow } from "../resources/Users";
 
 function AsyncResources() {
+  const { permissions } = usePermissions();
   const { hasProfile, isLoading, error } = useUserHasProfile();
 
   // IF there is an auth error, force the user to login again
@@ -89,14 +90,16 @@ function AsyncResources() {
       />
       <Resource name="progress_update_images" show={ProgressUpdateImageShow} create={ProgressUpdateImageCreate} />
 
-      <Resource
-        name="user_profile"
-        icon={UserIcon}
-        list={UserProfileList}
-        show={UserProfileShow}
-        edit={UserProfileEdit}
-        create={UserProfileCreate}
-      />
+      {permissions === "admin" && (
+        <Resource
+          name="user_profile"
+          icon={UserIcon}
+          list={UserProfileList}
+          show={UserProfileShow}
+          edit={UserProfileEdit}
+          create={UserProfileCreate}
+        />
+      )}
     </AdminUI>
   );
 }
