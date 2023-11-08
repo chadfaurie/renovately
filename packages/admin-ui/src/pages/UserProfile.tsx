@@ -4,12 +4,11 @@ import { useLayoutEffect } from "react";
 import { Create, required, useGetIdentity, useRedirect } from "react-admin";
 
 const NewUserProfile = () => {
-  const { data: user, isLoading, refetch } = useGetIdentity();
-
+  const { data: user, isLoading, refetch, error } = useGetIdentity();
   const redirect = useRedirect();
 
   useLayoutEffect(() => {
-    if (isLoading) {
+    if (isLoading || error) {
       return;
     }
 
@@ -20,7 +19,7 @@ const NewUserProfile = () => {
     return () => {
       refetch?.();
     };
-  }, [isLoading, redirect, refetch, user]);
+  }, [isLoading, redirect, refetch, user, error]);
 
   return (
     <AuthLayout>

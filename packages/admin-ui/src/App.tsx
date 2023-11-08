@@ -1,5 +1,12 @@
-import { MyAdmin } from "./Admin";
+import { Suspense, lazy } from "react";
+import { Loading } from "react-admin";
+
+const MyAdmin = lazy(() => import("./Admin"));
 
 export const MyApp = () => {
-  return <MyAdmin />;
+  return (
+    <Suspense fallback={<Loading />}>
+      <MyAdmin />
+    </Suspense>
+  );
 };

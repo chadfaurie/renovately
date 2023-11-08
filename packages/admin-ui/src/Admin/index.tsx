@@ -1,19 +1,20 @@
-import { AdminContext, defaultI18nProvider } from "react-admin";
+import { Suspense, lazy } from "react";
+import { AdminContext, Loading } from "react-admin";
 import { BrowserRouter } from "react-router-dom";
 
-import { AsyncResources } from "./AsyncResources";
-import { authProvider, dataProvider } from "../providers";
+import { authProvider, dataProvider, i18nProvider } from "../providers";
 import { theme } from "../theme";
 
-export const MyAdmin = () => (
+const AsyncResources = lazy(() => import("./AsyncResources"));
+
+const MyAdmin = () => (
   <BrowserRouter>
-    <AdminContext
-      dataProvider={dataProvider}
-      authProvider={authProvider}
-      theme={theme}
-      i18nProvider={defaultI18nProvider}
-    >
-      <AsyncResources />
+    <AdminContext dataProvider={dataProvider} authProvider={authProvider} theme={theme} i18nProvider={i18nProvider}>
+      <Suspense fallback={<Loading />}>
+        <AsyncResources />
+      </Suspense>
     </AdminContext>
   </BrowserRouter>
 );
+
+export default MyAdmin;
