@@ -8,7 +8,7 @@ import { MyApp } from "./App.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <CssBaseline />
+    <CssBaseline enableColorScheme />
     <MyApp />
   </React.StrictMode>,
 );

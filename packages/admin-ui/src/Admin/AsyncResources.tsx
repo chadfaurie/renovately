@@ -8,7 +8,7 @@ import {
   PersonAdd as UserIcon,
 } from "@mui/icons-material";
 import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
-import { AdminUI, Resource, CustomRoutes, Loading, usePermissions } from "react-admin";
+import { AdminUI, Resource, CustomRoutes, Loading, usePermissions, useAuthState } from "react-admin";
 import { Route } from "react-router-dom";
 
 import Dashboard from "../dashboard";
@@ -28,22 +28,18 @@ import { PropertyList, PropertyEdit, PropertyShow, PropertyCreate } from "../res
 import { TaskCreate, TaskEdit, TaskList, TaskShow } from "../resources/Task";
 import { UserProfileCreate, UserProfileEdit, UserProfileList, UserProfileShow } from "../resources/Users";
 
+const FullLoading = () => {
+  return <Loading sx={{ height: "100%" }} />;
+};
+
 function AsyncResources() {
   const { permissions } = usePermissions();
   const { hasProfile, isLoading, error } = useUserHasProfile();
-
-  // IF there is an auth error, force the user to login again
-  if (error) {
-    return (
-      <AdminUI loginPage={LoginPage} ready={Loading}>
-        <Resource name="user_profile" />
-      </AdminUI>
-    );
-  }
+  const { authenticated } = useAuthState();
 
   // If the user does not have a profile, force them to create one
-  if (!hasProfile) {
-    return <AdminUI loginPage={LoginPage} ready={isLoading ? Loading : NewUserProfile} />;
+  if (!hasProfile && authenticated && !error) {
+    return <AdminUI loginPage={LoginPage} ready={isLoading ? FullLoading : NewUserProfile} />;
   }
 
   return (

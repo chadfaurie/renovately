@@ -24,6 +24,8 @@ export const MultiLinkInput = <T extends string = string>({
     // defaultValue: "default", // default value before the render
   });
 
+  console.log("entity", entity);
+
   //   const watchShowAge = watch("showAge", false);
 
   //   const entity = useMemo((): string => {

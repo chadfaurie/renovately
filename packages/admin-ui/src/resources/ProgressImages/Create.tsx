@@ -23,7 +23,7 @@ export const ProgressUpdateImageCreate = () => {
         <TextInput source="image_url" />
         <ImageInput source="image_url" />
         <ReferenceInput source="progress_update_id" reference="progress">
-          <AutocompleteInput optionText="update_description" />
+          <AutocompleteInput optionText="description" />
         </ReferenceInput>
       </SimpleForm>
     </Create>

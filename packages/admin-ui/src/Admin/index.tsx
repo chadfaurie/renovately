@@ -10,7 +10,7 @@ const AsyncResources = lazy(() => import("./AsyncResources"));
 const MyAdmin = () => (
   <BrowserRouter>
     <AdminContext dataProvider={dataProvider} authProvider={authProvider} theme={theme} i18nProvider={i18nProvider}>
-      <Suspense fallback={<Loading />}>
+      <Suspense fallback={<Loading sx={{ height: "100%" }} />}>
         <AsyncResources />
       </Suspense>
     </AdminContext>

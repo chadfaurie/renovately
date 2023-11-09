@@ -1,3 +1,4 @@
+import { ComponentProps } from "react";
 import { SelectInput } from "react-admin";
 
 import { Database } from "../../database.types";
@@ -11,8 +12,10 @@ const choices: Choices<UpdateType> = [
   { id: "task", name: "Task" },
 ];
 
-export const UpdateTypeSelect = () => {
-  return <SelectInput source="update_type" choices={choices} />;
+type Props = ComponentProps<typeof SelectInput>;
+
+export const UpdateTypeSelect = ({ ...props }: Props) => {
+  return <SelectInput source="type" choices={choices} {...props} />;
 };
 
 export const relatedSourceMap: Record<UpdateType, string> = {

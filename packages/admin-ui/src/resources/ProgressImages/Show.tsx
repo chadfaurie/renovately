@@ -1,13 +1,14 @@
-import { DateField, ImageField, ReferenceField, Show, SimpleShowLayout, TextField } from "react-admin";
+import { DateField, ImageField, Show, SimpleShowLayout } from "react-admin";
+
+import { ProgressUpdateReferenceField } from "../../references";
 
 export const ProgressUpdateImageShow = () => (
   <Show>
     <SimpleShowLayout>
-      <TextField source="id" />
-      <DateField source="created_at" />
-      <TextField source="image_url" />
+      <ProgressUpdateReferenceField source="progress_update_id" />
+      <DateField source="created_at" showTime />
+      {/* <TextField source="image_url" /> */}
       <ImageField source="image_url" />
-      <ReferenceField source="progress_update_id" reference="progress" />
     </SimpleShowLayout>
   </Show>
 );

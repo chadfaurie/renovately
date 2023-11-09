@@ -72,3 +72,11 @@ create policy "Enable read access for all users" on "public"."progress_update_im
 select to public using (true);
 create policy "Enable insert for authenticated users only" on "public"."progress_update_images" as permissive for
 insert to authenticated with check (true);
+-- 
+-- Project Link
+create policy "Enable insert for authenticated users only" on "public"."user_project_role_link" as permissive for
+insert to authenticated with check (true);
+-- 
+-- Property Link
+create policy "Enable insert for authenticated users only" on "public"."user_property_role_link" as permissive for
+insert to authenticated with check (true);

@@ -3,6 +3,7 @@ import {
   CreateButton,
   Datagrid,
   DateField,
+  ImageField,
   ReferenceManyField,
   Show,
   ShowButton,
@@ -36,8 +37,8 @@ export const ProgressUpdateShow = () => {
           />
           <ReferenceManyField reference="progress_update_images" target="progress_update_id">
             <Datagrid>
-              <DateField source="created_at" />
-              <TextField source="image_url" />
+              <DateField source="created_at" showTime />
+              <ImageField source="image_url" />
               <ShowButton />
             </Datagrid>
           </ReferenceManyField>

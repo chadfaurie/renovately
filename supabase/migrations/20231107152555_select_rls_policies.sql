@@ -20,6 +20,7 @@ select to public using (
             AND (
                 getUserIsAdmin(auth.uid())
                 OR getUserPropertyRole(auth.uid(), id) IS NOT NULL
+                OR created_by = auth.uid()
             )
         )
     );
@@ -33,6 +34,7 @@ select to public using (
             AND (
                 getUserIsAdmin(auth.uid())
                 OR getUserProjectRole(auth.uid(), id) IS NOT NULL
+                OR created_by = auth.uid()
             )
         )
     );

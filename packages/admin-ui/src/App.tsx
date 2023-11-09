@@ -5,7 +5,7 @@ const MyAdmin = lazy(() => import("./Admin"));
 
 export const MyApp = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    <Suspense fallback={<Loading sx={{ height: "100%" }} />}>
       <MyAdmin />
     </Suspense>
   );

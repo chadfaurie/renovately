@@ -28,3 +28,11 @@ export const PartnerReferenceField = (props: RefFieldProps) => {
     </ReferenceField>
   );
 };
+
+export const ProgressUpdateReferenceField = (props: RefFieldProps) => {
+  return (
+    <ReferenceField reference="progress" link="show" {...props}>
+      <TextField source="description" />
+    </ReferenceField>
+  );
+};

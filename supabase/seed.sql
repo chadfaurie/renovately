@@ -47,7 +47,10 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 	('00000000-0000-0000-0000-000000000000', '887b9fa8-e38a-4211-ac96-4f5016f4d8c6', '{"action":"logout","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account"}', '2023-11-04 08:50:33.806837+00', ''),
 	('00000000-0000-0000-0000-000000000000', '5b5e8d65-4e8d-4136-a04c-a9d110b3175c', '{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2023-11-04 08:50:57.895489+00', ''),
 	('00000000-0000-0000-0000-000000000000', '7712ac45-5c0c-477d-8889-ac43ea26504d', '{"action":"logout","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account"}', '2023-11-04 08:53:14.513378+00', ''),
-	('00000000-0000-0000-0000-000000000000', '80bc85e3-66b2-489e-be6b-16875b504893', '{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2023-11-04 08:53:40.931325+00', '');
+	('00000000-0000-0000-0000-000000000000', '80bc85e3-66b2-489e-be6b-16875b504893', '{"action":"login","actor_id":"ad0de4fb-143f-4458-89bb-913e54c6eb53","actor_username":"admin@example.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2023-11-04 08:53:40.931325+00', ''),
+	('00000000-0000-0000-0000-000000000000', '4976abe0-6a95-4dbf-94ed-90c14fe49cd4', '{"action":"login","actor_id":"00000000-0000-0000-0000-000000000000","actor_username":"root@root.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2023-11-09 05:53:04.46061+00', ''),
+	('00000000-0000-0000-0000-000000000000', 'bf0b868e-6bd0-4d5f-9303-1b943eecd130', '{"action":"logout","actor_id":"00000000-0000-0000-0000-000000000000","actor_username":"root@root.com","actor_via_sso":false,"log_type":"account"}', '2023-11-09 05:53:12.693421+00', ''),
+	('00000000-0000-0000-0000-000000000000', '9dccdfb6-546f-4503-8eb0-d2569a3bcad0', '{"action":"login","actor_id":"00000000-0000-0000-0000-000000000000","actor_username":"root@root.com","actor_via_sso":false,"log_type":"account","traits":{"provider":"email"}}', '2023-11-09 05:55:44.911879+00', '');
 
 
 --
@@ -61,8 +64,8 @@ INSERT INTO "auth"."audit_log_entries" ("instance_id", "id", "payload", "created
 --
 
 INSERT INTO "auth"."users" ("instance_id", "id", "aud", "role", "email", "encrypted_password", "email_confirmed_at", "invited_at", "confirmation_token", "confirmation_sent_at", "recovery_token", "recovery_sent_at", "email_change_token_new", "email_change", "email_change_sent_at", "last_sign_in_at", "raw_app_meta_data", "raw_user_meta_data", "is_super_admin", "created_at", "updated_at", "phone", "phone_confirmed_at", "phone_change", "phone_change_token", "phone_change_sent_at", "email_change_token_current", "email_change_confirm_status", "banned_until", "reauthentication_token", "reauthentication_sent_at", "is_sso_user", "deleted_at") VALUES
-	('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000', 'authenticated', 'authenticated', 'root@root.com', '$2a$10$oNoHPsMzaknPILojkcAN5ux7osLppn.htgwHBm.WPRmMHy4.U6IdK', '2023-11-02 12:42:42.174603+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-11-04 08:01:41.562776+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-11-02 12:42:42.170428+00', '2023-11-04 08:01:41.564537+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL),
-	('00000000-0000-0000-0000-000000000000', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', 'authenticated', 'authenticated', 'admin@example.com', '$2a$10$oNoHPsMzaknPILojkcAN5ux7osLppn.htgwHBm.WPRmMHy4.U6IdK', '2023-11-02 12:42:42.174603+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-11-04 08:53:40.931829+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-11-02 12:42:42.170428+00', '2023-11-04 08:53:40.933396+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL);
+	('00000000-0000-0000-0000-000000000000', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', 'authenticated', 'authenticated', 'admin@example.com', '$2a$10$oNoHPsMzaknPILojkcAN5ux7osLppn.htgwHBm.WPRmMHy4.U6IdK', '2023-11-02 12:42:42.174603+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-11-04 08:53:40.931829+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-11-02 12:42:42.170428+00', '2023-11-04 08:53:40.933396+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL),
+	('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000', 'authenticated', 'authenticated', 'root@root.com', '$2a$10$oNoHPsMzaknPILojkcAN5ux7osLppn.htgwHBm.WPRmMHy4.U6IdK', '2023-11-02 12:42:42.174603+00', NULL, '', NULL, '', NULL, '', '', NULL, '2023-11-09 05:55:44.91248+00', '{"provider": "email", "providers": ["email"]}', '{}', NULL, '2023-11-02 12:42:42.170428+00', '2023-11-09 05:55:44.913762+00', NULL, NULL, '', '', NULL, '', 0, NULL, '', NULL, false, NULL);
 
 
 --
@@ -84,7 +87,8 @@ INSERT INTO "auth"."identities" ("id", "user_id", "identity_data", "provider", "
 --
 
 INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "factor_id", "aal", "not_after") VALUES
-	('511138ca-f0e4-4a30-b850-a2c49697ec7e', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', '2023-11-04 08:53:40.931889+00', '2023-11-04 08:53:40.931889+00', NULL, 'aal1', NULL);
+	('511138ca-f0e4-4a30-b850-a2c49697ec7e', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', '2023-11-04 08:53:40.931889+00', '2023-11-04 08:53:40.931889+00', NULL, 'aal1', NULL),
+	('e994e882-48b2-46ed-9e16-8ac1cbebea5f', '00000000-0000-0000-0000-000000000000', '2023-11-09 05:55:44.91253+00', '2023-11-09 05:55:44.91253+00', NULL, 'aal1', NULL);
 
 
 --
@@ -92,7 +96,8 @@ INSERT INTO "auth"."sessions" ("id", "user_id", "created_at", "updated_at", "fac
 --
 
 INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "authentication_method", "id") VALUES
-	('511138ca-f0e4-4a30-b850-a2c49697ec7e', '2023-11-04 08:53:40.93363+00', '2023-11-04 08:53:40.93363+00', 'password', '7ceaf4a5-4caa-42dc-8e55-b6132af4a9c3');
+	('511138ca-f0e4-4a30-b850-a2c49697ec7e', '2023-11-04 08:53:40.93363+00', '2023-11-04 08:53:40.93363+00', 'password', '7ceaf4a5-4caa-42dc-8e55-b6132af4a9c3'),
+	('e994e882-48b2-46ed-9e16-8ac1cbebea5f', '2023-11-09 05:55:44.913946+00', '2023-11-09 05:55:44.913946+00', 'password', '2db2f9df-9113-483d-b79a-de9edbc07c75');
 
 
 --
@@ -112,7 +117,8 @@ INSERT INTO "auth"."mfa_amr_claims" ("session_id", "created_at", "updated_at", "
 --
 
 INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "revoked", "created_at", "updated_at", "parent", "session_id") VALUES
-	('00000000-0000-0000-0000-000000000000', 14, 'UnGR_zu1nkXoxXX0NQCpXw', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', false, '2023-11-04 08:53:40.93265+00', '2023-11-04 08:53:40.93265+00', NULL, '511138ca-f0e4-4a30-b850-a2c49697ec7e');
+	('00000000-0000-0000-0000-000000000000', 14, 'UnGR_zu1nkXoxXX0NQCpXw', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', false, '2023-11-04 08:53:40.93265+00', '2023-11-04 08:53:40.93265+00', NULL, '511138ca-f0e4-4a30-b850-a2c49697ec7e'),
+	('00000000-0000-0000-0000-000000000000', 16, '9uCK7KcKmBd3g4lpQkgemg', '00000000-0000-0000-0000-000000000000', false, '2023-11-09 05:55:44.913132+00', '2023-11-09 05:55:44.913132+00', NULL, 'e994e882-48b2-46ed-9e16-8ac1cbebea5f');
 
 
 --
@@ -150,7 +156,8 @@ INSERT INTO "auth"."refresh_tokens" ("instance_id", "id", "token", "user_id", "r
 --
 
 INSERT INTO "public"."property" ("id", "created_at", "created_by", "modified_at", "modified_by", "deleted_at", "nickname", "address", "ownership_type", "access_restrictions") VALUES
-	('69370b5b-a2eb-47d6-898b-3ea861594d34', '2023-11-07 07:19:48.22188+00', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', '2023-11-07 07:19:48.22188+00', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', NULL, 'Home', '15c Indian Road', 'OWNER', 'NONE');
+	('69370b5b-a2eb-47d6-898b-3ea861594d34', '2023-11-07 07:19:48.22188+00', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', '2023-11-07 07:19:48.22188+00', 'ad0de4fb-143f-4458-89bb-913e54c6eb53', NULL, 'Home', '15c Indian Road', 'OWNER', 'NONE'),
+	('6d917d60-e077-4836-aa78-f623a612c6e1', '2023-11-09 05:55:35.844191+00', '00000000-0000-0000-0000-000000000000', '2023-11-09 05:55:35.844191+00', '00000000-0000-0000-0000-000000000000', NULL, NULL, 'Test 1', NULL, NULL);
 
 
 --
@@ -271,7 +278,7 @@ INSERT INTO "storage"."objects" ("id", "bucket_id", "name", "owner", "created_at
 -- Name: refresh_tokens_id_seq; Type: SEQUENCE SET; Schema: auth; Owner: supabase_auth_admin
 --
 
-SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 14, true);
+SELECT pg_catalog.setval('"auth"."refresh_tokens_id_seq"', 16, true);
 
 
 --

@@ -1,4 +1,4 @@
-import { Edit, Labeled, SimpleForm, TextInput } from "react-admin";
+import { Edit, Labeled, SimpleForm, TextInput, required } from "react-admin";
 
 import { PropertyReferenceField } from "../../references";
 
@@ -8,8 +8,8 @@ export const AreaEdit = () => (
       <Labeled>
         <PropertyReferenceField source="property_id" />
       </Labeled>
-      <TextInput source="name" />
-      <TextInput source="type" />
+      <TextInput source="name" validate={[required()]} />
+      <TextInput source="type" validate={[required()]} />
       <TextInput source="dimensions" />
       <TextInput source="description" />
       <TextInput source="renovation_status" />

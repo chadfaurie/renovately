@@ -205,7 +205,7 @@ CREATE TABLE "public"."user_project_role_link" (
 ALTER TABLE "public"."user_project_role_link" ENABLE ROW LEVEL SECURITY;
 -- Create the foreign key constraints
 ALTER TABLE "public"."user_project_role_link"
-ADD CONSTRAINT "user_project_role_link_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."user_profile"("id");
+ADD CONSTRAINT "user_project_role_link_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES auth.users(id);
 ALTER TABLE "public"."user_project_role_link"
 ADD CONSTRAINT "user_project_role_link_project_id_fkey" FOREIGN KEY ("project_id") REFERENCES "public"."project"("id");
 -- 
@@ -226,7 +226,7 @@ CREATE TABLE "public"."user_property_role_link" (
 ALTER TABLE "public"."user_property_role_link" ENABLE ROW LEVEL SECURITY;
 -- Create the foreign key constraints
 ALTER TABLE "public"."user_property_role_link"
-ADD CONSTRAINT "user_property_role_link_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "public"."user_profile"("id");
+ADD CONSTRAINT "user_property_role_link_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES auth.users(id);
 ALTER TABLE "public"."user_property_role_link"
 ADD CONSTRAINT "user_property_role_link_property_id_fkey" FOREIGN KEY ("property_id") REFERENCES "public"."property"("id");
 -- 

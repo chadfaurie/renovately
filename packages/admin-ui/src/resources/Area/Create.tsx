@@ -1,16 +1,14 @@
-import { Create, SimpleForm, TextInput } from "react-admin";
+import { Create, SimpleForm, TextInput, required } from "react-admin";
 
-import { PropertyReferenceField } from "../../references";
-import { PropertyReferenceInput } from "../../references/inputs";
+import { PropertyReferenceInput } from "../../references";
 
 export const AreaCreate = () => (
   <Create redirect="show">
     <SimpleForm>
-      <PropertyReferenceField source="property_id" />
-      <TextInput source="name" />
+      <TextInput source="name" validate={[required()]} />
+      <TextInput source="type" validate={[required()]} />
+      <PropertyReferenceInput source="property_id" validate={[required()]} />
       <TextInput source="description" />
-      <PropertyReferenceInput source="property_id" />
-      <TextInput source="type" />
       <TextInput source="dimensions" />
       <TextInput source="renovation_status" />
       <TextInput source="renovation_requirements" />
