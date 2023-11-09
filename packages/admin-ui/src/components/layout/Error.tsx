@@ -92,7 +92,7 @@ const ErrorClasses = {
 
 const Root = styled("div", {
   name: PREFIX,
-  overridesResolver: (props, styles) => styles.root,
+  overridesResolver: (_, styles) => styles.root,
 })(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
