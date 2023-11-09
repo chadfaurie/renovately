@@ -2,7 +2,19 @@ import { parse } from "query-string";
 import { useMemo } from "react";
 import { useLocation } from "react-router-dom";
 
-export const useCreateParams = (field: string, parentEntity: string) => {
+export const useCreateParams = () => {
+  const location = useLocation();
+
+  const params = useMemo(() => {
+    const searchObj = parse(location.search);
+
+    return searchObj;
+  }, [location.search]);
+
+  return params;
+};
+
+export const useCreateParamsField = (field: string, parentEntity: string) => {
   const location = useLocation();
 
   const id = useMemo(() => {

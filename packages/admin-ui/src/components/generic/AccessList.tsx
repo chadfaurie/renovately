@@ -7,7 +7,7 @@ import {
   usePermissions,
 } from "react-admin";
 
-import { CreateLinkedButton } from "./CreateLinked";
+import { CreateRelatedButton } from "./CreateRelatedButton";
 import { UserReferenceField } from "../../references";
 
 interface Props {
@@ -22,7 +22,7 @@ export const AccessList = ({ id, reference, target, source }: Props) => {
 
   return (
     <>
-      <CreateLinkedButton reference={reference} id={id} target={target} />
+      <CreateRelatedButton reference={reference} id={id} target={target} />
 
       <ReferenceManyField label={false} reference={reference} source={source ?? "id"} target={target}>
         <Datagrid bulkActionButtons={false}>

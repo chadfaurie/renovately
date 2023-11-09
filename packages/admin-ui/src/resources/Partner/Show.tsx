@@ -11,7 +11,7 @@ import {
   useGetRecordId,
 } from "react-admin";
 
-import { CreateLinkedButton } from "../../components/generic/CreateLinked";
+import { CreateRelatedButton } from "../../components/generic/CreateRelatedButton";
 import { PartnerReferenceField, ProjectReferenceField } from "../../references";
 
 export const PartnerShow = () => {
@@ -26,7 +26,7 @@ export const PartnerShow = () => {
           <ChipField source="partner_type" />
         </Tab>
         <Tab label="Projects">
-          <CreateLinkedButton reference="partner_project_link" id={id} target="partner_id" />
+          <CreateRelatedButton reference="partner_project_link" id={id} target="partner_id" />
 
           <ReferenceManyField label={false} reference="partner_project_link" source="id" target="partner_id">
             <Datagrid>

@@ -16,6 +16,7 @@ type MultiLinkInputProps<T extends string = string> = Omit<ReferenceInputProps, 
 export const MultiLinkInput = <T extends string = string>({
   referenceField,
   relatedSource,
+  validate,
   ...rest
 }: MultiLinkInputProps<T>) => {
   const entity = useWatch({
@@ -36,7 +37,7 @@ export const MultiLinkInput = <T extends string = string>({
 
   return (
     <ReferenceInput {...rest} reference={entity}>
-      <AutocompleteInput optionText={relatedEntitySource} />
+      <AutocompleteInput optionText={relatedEntitySource} validate={validate} />
     </ReferenceInput>
   );
 };

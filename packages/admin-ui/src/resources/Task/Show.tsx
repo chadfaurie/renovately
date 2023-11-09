@@ -13,7 +13,7 @@ export const TaskShow = () => (
         <TextField source="priority" />
         <ProjectReferenceField source="project_id" />
       </Tab>
-      <Tab label="Updates">
+      <Tab label="Progress">
         <UpdatesList type="task" />
       </Tab>
     </TabbedShowLayout>

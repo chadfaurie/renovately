@@ -1,10 +1,10 @@
 import { Create, ReferenceInput, SimpleForm, TextInput, ImageInput, AutocompleteInput } from "react-admin";
 
-import { useCreateParams } from "../../hooks";
+import { useCreateParamsField } from "../../hooks";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const ProgressUpdateImageCreate = () => {
-  const { id, redirect } = useCreateParams("progress_id", "progress");
+  const { id, redirect } = useCreateParamsField("progress_id", "progress");
 
   return (
     <Create redirect={redirect}>

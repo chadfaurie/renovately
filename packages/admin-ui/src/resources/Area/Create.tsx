@@ -1,11 +1,11 @@
 import { RichTextInput } from "ra-input-rich-text";
 import { Create, SimpleForm, TextInput, required } from "react-admin";
 
-import { useCreateParams } from "../../hooks";
+import { useCreateParamsField } from "../../hooks";
 import { PropertyReferenceInput } from "../../references";
 
 export const AreaCreate = () => {
-  const { id, redirect } = useCreateParams("property_id", "property");
+  const { id, redirect } = useCreateParamsField("property_id", "property");
 
   return (
     <Create redirect={redirect ?? "show"}>

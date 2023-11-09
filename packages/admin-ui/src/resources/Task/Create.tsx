@@ -1,11 +1,11 @@
 import { RichTextInput } from "ra-input-rich-text";
 import { Create, SimpleForm, TextInput } from "react-admin";
 
-import { useCreateParams } from "../../hooks";
+import { useCreateParamsField } from "../../hooks";
 import { PartnerReferenceInput, ProjectReferenceInput } from "../../references";
 
 export const TaskCreate = () => {
-  const { id, redirect } = useCreateParams("project_id", "project");
+  const { id, redirect } = useCreateParamsField("project_id", "project");
 
   return (
     <Create redirect={redirect ?? "show"}>
