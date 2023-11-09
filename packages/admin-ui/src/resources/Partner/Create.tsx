@@ -6,8 +6,8 @@ export const PartnerCreate = () => (
   <Create redirect="show">
     <SimpleForm>
       <TextInput source="name" validate={[required()]} />
-      <TextInput source="description" />
       <PartnerTypeSelect />
+      <TextInput source="description" />
     </SimpleForm>
   </Create>
 );

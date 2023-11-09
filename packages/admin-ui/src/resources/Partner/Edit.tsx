@@ -6,8 +6,8 @@ export const PartnerEdit = () => (
   <Edit>
     <SimpleForm>
       <TextInput source="name" validate={[required()]} />
-      <TextInput source="description" />
       <PartnerTypeSelect />
+      <TextInput source="description" />
     </SimpleForm>
   </Edit>
 );

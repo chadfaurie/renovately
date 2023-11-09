@@ -1,4 +1,4 @@
-import { SelectInput } from "react-admin";
+import { SelectInput, required } from "react-admin";
 
 import { PartnerTypeEnum } from "../../types";
 import { Choices } from "../../utils";
@@ -9,5 +9,5 @@ const choices: Choices<PartnerTypeEnum> = [
 ];
 
 export const PartnerTypeSelect = () => {
-  return <SelectInput source="partner_type" choices={choices} />;
+  return <SelectInput source="type" choices={choices} validate={[required()]} />;
 };
