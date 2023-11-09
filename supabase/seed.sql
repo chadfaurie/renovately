@@ -380,14 +380,7 @@ INSERT INTO "public"."area" (
 		"name",
 		"type",
 		"dimensions",
-		"description",
-		"renovation_status",
-		"renovation_requirements",
-		"before_images",
-		"after_images",
-		"current_condition",
-		"desired_features",
-		"materials_needed"
+		"description"
 	)
 VALUES (
 		'29703a6f-c527-4c4d-a510-65bebba2a7ce',
@@ -400,14 +393,7 @@ VALUES (
 		'Bathroom',
 		'BATHROOM',
 		'3x3',
-		'Bathroom',
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL
+		'Bathroom'
 	),
 	(
 		'ded73341-a324-4fcd-b0a1-20755d166c82',
@@ -420,14 +406,7 @@ VALUES (
 		'Kitchen',
 		'KITCHEN',
 		'3x5.4',
-		'Kitchen',
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL
+		'Kitchen'
 	),
 	(
 		'2909ce97-b40e-473a-b528-825254370e03',
@@ -440,14 +419,7 @@ VALUES (
 		'Test',
 		'BATHROOM',
 		NULL,
-		'Test',
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL,
-		NULL
+		'Test'
 	);
 --
 -- Data for Name: audit_trail; Type: TABLE DATA; Schema: public; Owner: postgres

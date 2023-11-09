@@ -1,10 +1,18 @@
 -- 
 -- Invite status
 create type "public"."link_invitation_status_enum" as enum ('accepted', 'invited', 'declined');
+-- Set Defaults for existing records
 alter table "public"."user_project_role_link"
-add column "status" link_invitation_status_enum not null;
+add column "status" link_invitation_status_enum not null DEFAULT 'accepted';
 alter table "public"."user_property_role_link"
-add column "status" link_invitation_status_enum not null;
+add column "status" link_invitation_status_enum not null DEFAULT 'accepted';
+-- Set Actual Defaults
+alter table "public"."user_project_role_link"
+ALTER COLUMN "status"
+SET DEFAULT 'invited';
+alter table "public"."user_property_role_link"
+ALTER COLUMN "status"
+SET DEFAULT 'invited';
 -- 
 -- Drop Area Columns
 alter table "public"."area" drop column "after_images";
