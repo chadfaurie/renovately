@@ -11,8 +11,10 @@ import { LoginPage, SetPasswordPage, ForgotPasswordPage } from "ra-supabase";
 import { AdminUI, Resource, CustomRoutes, Loading, usePermissions, useAuthState } from "react-admin";
 import { Route } from "react-router-dom";
 
+import MyLayout from "../components/layout";
 import Dashboard from "../dashboard";
 import { useUserHasProfile } from "../hooks";
+import Test from "../pages/Test";
 import NewUserProfile from "../pages/UserProfile";
 import { AreaCreate, AreaEdit, AreaList, AreaShow } from "../resources/Area";
 import { PartnerCreate, PartnerEdit, PartnerList, PartnerShow } from "../resources/Partner";
@@ -29,7 +31,7 @@ import { TaskCreate, TaskEdit, TaskList, TaskShow } from "../resources/Task";
 import { UserProfileCreate, UserProfileEdit, UserProfileList, UserProfileShow } from "../resources/Users";
 
 const FullLoading = () => {
-  return <Loading sx={{ height: "100%" }} />;
+  return <Loading sx={{ height: "100vh" }} />;
 };
 
 function AsyncResources() {
@@ -37,17 +39,25 @@ function AsyncResources() {
   const { hasProfile, isLoading, error } = useUserHasProfile();
   const { authenticated } = useAuthState();
 
+  if (isLoading) {
+    return <FullLoading />;
+  }
+
   // If the user does not have a profile, force them to create one
   if (!hasProfile && authenticated && !error) {
-    return <AdminUI loginPage={LoginPage} ready={isLoading ? FullLoading : NewUserProfile} />;
+    return <AdminUI loginPage={LoginPage} ready={NewUserProfile} layout={MyLayout} />;
   }
 
   return (
-    <AdminUI ready={NewUserProfile} loginPage={LoginPage} dashboard={Dashboard}>
+    <AdminUI ready={NewUserProfile} loginPage={LoginPage} dashboard={Dashboard} layout={MyLayout}>
       <CustomRoutes noLayout>
         <Route path={SetPasswordPage.path} element={<SetPasswordPage />} />
         <Route path={ForgotPasswordPage.path} element={<ForgotPasswordPage />} />
         <Route path={"/new_profile"} element={<NewUserProfile />} />
+      </CustomRoutes>
+
+      <CustomRoutes>
+        <Route path={"/test"} element={<Test />} />
       </CustomRoutes>
 
       <Resource

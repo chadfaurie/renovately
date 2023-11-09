@@ -1,3 +1,4 @@
+import * as Sentry from "@sentry/react";
 import { supabaseAuthProvider } from "ra-supabase";
 import { AuthProvider } from "react-admin";
 
@@ -9,6 +10,12 @@ export const authProvider: AuthProvider = supabaseAuthProvider(supabaseClient, {
     const { data } = await supabaseClient.from("user_profile").select().match({ id: user.id }).single();
 
     localStorage.setItem("permissions", data?.role ?? "");
+
+    Sentry.setUser({
+      email: user.email,
+      id: user.id,
+      username: user.email,
+    });
 
     return {
       id: user.id,
