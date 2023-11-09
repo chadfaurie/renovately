@@ -14,6 +14,7 @@ import { Route } from "react-router-dom";
 import MyLayout from "../components/layout";
 import Dashboard from "../dashboard";
 import { useUserHasProfile } from "../hooks";
+import MyProfile from "../pages/MyProfile";
 import Test from "../pages/Test";
 import NewUserProfile from "../pages/UserProfile";
 import { AreaCreate, AreaEdit, AreaList, AreaShow } from "../resources/Area";
@@ -58,6 +59,7 @@ function AsyncResources() {
 
       <CustomRoutes>
         <Route path={"/test"} element={<Test />} />
+        <Route path={"/myProfile"} element={<MyProfile />} />
       </CustomRoutes>
 
       <Resource
