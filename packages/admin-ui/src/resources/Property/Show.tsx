@@ -10,6 +10,7 @@ import {
   ChipField,
   CreateButton,
   useGetRecordId,
+  RichTextField,
 } from "react-admin";
 
 import { AccessList } from "../../components/generic";
@@ -52,7 +53,7 @@ export const PropertyShow = () => {
           />
           <ReferenceManyField label={false} reference="project" source="id" target="property_id">
             <Datagrid bulkActionButtons={false}>
-              <TextField source="description" />
+              <RichTextField source="description" />
               <DateField source="start_date" />
               <DateField source="estimated_end_date" />
               <ChipField source="status" />

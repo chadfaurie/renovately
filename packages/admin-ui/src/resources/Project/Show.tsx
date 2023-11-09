@@ -4,6 +4,7 @@ import {
   Datagrid,
   DateField,
   ReferenceManyField,
+  RichTextField,
   Show,
   ShowButton,
   Tab,
@@ -39,7 +40,7 @@ export const ProjectShow = () => {
           />
           <ReferenceManyField label={false} reference="task" source="id" target="project_id">
             <Datagrid bulkActionButtons={false}>
-              <TextField source="description" />
+              <RichTextField source="description" />
               <PartnerReferenceField source="to_be_completed_by" />
               <ChipField source="status" />
               <TextField source="priority" />
@@ -47,7 +48,7 @@ export const ProjectShow = () => {
             </Datagrid>
           </ReferenceManyField>
         </Tab>
-        <Tab label="Updates">
+        <Tab label="Progress">
           <UpdatesList type="project" />
         </Tab>
         <Tab label="Access">

@@ -13,7 +13,7 @@ export const AreaShow = () => (
         <RichTextField source="description" />
         <TextField source="dimensions" />
       </Tab>
-      <Tab label="Updates">
+      <Tab label="Progress">
         <UpdatesList type="area" />
       </Tab>
     </TabbedShowLayout>

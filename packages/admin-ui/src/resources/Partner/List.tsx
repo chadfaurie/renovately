@@ -5,7 +5,7 @@ export const PartnerList = () => (
     <Datagrid rowClick="show">
       <TextField source="name" />
       <TextField source="description" />
-      <ChipField source="partner_type" />
+      <ChipField source="type" />
     </Datagrid>
   </List>
 );
