@@ -28,3 +28,11 @@ export const PartnerReferenceInput = (props: RefInputProps) => {
     </ReferenceInput>
   );
 };
+
+export const UserReferenceInput = (props: RefInputProps) => {
+  return (
+    <ReferenceInput reference="user_profile" {...props}>
+      <AutocompleteInput optionText="email" />
+    </ReferenceInput>
+  );
+};

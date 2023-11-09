@@ -11,7 +11,7 @@ import { CreateRelatedButton } from "./CreateRelatedButton";
 import { UserReferenceField } from "../../references";
 
 interface Props {
-  id: Identifier;
+  id?: Identifier;
   reference: string;
   source?: string;
   target: string;

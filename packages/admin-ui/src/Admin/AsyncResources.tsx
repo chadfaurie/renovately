@@ -27,7 +27,9 @@ import {
 } from "../resources/Progress";
 import { ProgressUpdateImageCreate, ProgressUpdateImageShow } from "../resources/ProgressImages";
 import { ProjectCreate, ProjectEdit, ProjectList, ProjectShow } from "../resources/Project";
+import { ProjectLinkCreate } from "../resources/ProjectLink";
 import { PropertyList, PropertyEdit, PropertyShow, PropertyCreate } from "../resources/Property";
+import { PropertyLinkCreate } from "../resources/PropertyLink";
 import { TaskCreate, TaskEdit, TaskList, TaskShow } from "../resources/Task";
 import { UserProfileCreate, UserProfileEdit, UserProfileList, UserProfileShow } from "../resources/Users";
 
@@ -70,6 +72,7 @@ function AsyncResources() {
         edit={PropertyEdit}
         create={PropertyCreate}
       />
+      <Resource name="user_property_role_link" create={PropertyLinkCreate} />
       <Resource name="area" icon={AreaIcon} list={AreaList} show={AreaShow} edit={AreaEdit} create={AreaCreate} />
       <Resource
         name="project"
@@ -79,6 +82,7 @@ function AsyncResources() {
         edit={ProjectEdit}
         create={ProjectCreate}
       />
+      <Resource name="user_project_role_link" create={ProjectLinkCreate} />
       <Resource
         name="partner"
         icon={PartnerIcon}

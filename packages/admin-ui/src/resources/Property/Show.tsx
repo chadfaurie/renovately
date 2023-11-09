@@ -8,16 +8,12 @@ import {
   DateField,
   ShowButton,
   ChipField,
-  CreateButton,
-  useGetRecordId,
   RichTextField,
 } from "react-admin";
 
-import { AccessList } from "../../components/generic";
+import { AccessList, CreateRelatedButton } from "../../components/generic";
 
 export const PropertyShow = () => {
-  const id = useGetRecordId();
-
   return (
     <Show>
       <TabbedShowLayout>
@@ -28,13 +24,7 @@ export const PropertyShow = () => {
           <TextField source="access_restrictions" />
         </Tab>
         <Tab label="Areas">
-          <CreateButton
-            resource="area"
-            to={{
-              pathname: "/area/create",
-              search: `?property_id=${id}`,
-            }}
-          />
+          <CreateRelatedButton reference="area" target="property_id" />
           <ReferenceManyField label={false} reference="area" source="id" target="property_id">
             <Datagrid bulkActionButtons={false}>
               <TextField source="name" />
@@ -44,13 +34,7 @@ export const PropertyShow = () => {
           </ReferenceManyField>
         </Tab>
         <Tab label="Projects">
-          <CreateButton
-            resource="project"
-            to={{
-              pathname: "/project/create",
-              search: `?property_id=${id}`,
-            }}
-          />
+          <CreateRelatedButton reference="project" target="property_id" />
           <ReferenceManyField label={false} reference="project" source="id" target="property_id">
             <Datagrid bulkActionButtons={false}>
               <RichTextField source="description" />
@@ -62,7 +46,7 @@ export const PropertyShow = () => {
           </ReferenceManyField>
         </Tab>
         <Tab label="Access">
-          <AccessList id={id} reference="user_property_role_link" target="property_id" />
+          <AccessList reference="user_property_role_link" target="property_id" />
         </Tab>
       </TabbedShowLayout>
     </Show>

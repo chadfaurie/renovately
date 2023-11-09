@@ -36,63 +36,42 @@ export interface Database {
     Tables: {
       area: {
         Row: {
-          after_images: string[] | null
-          before_images: string[] | null
           created_at: string
           created_by: string
-          current_condition: string | null
           deleted_at: string | null
           description: string | null
-          desired_features: string | null
           dimensions: string | null
           id: string
-          materials_needed: string[] | null
           modified_at: string
           modified_by: string
           name: string
           property_id: string
-          renovation_requirements: string | null
-          renovation_status: string | null
           type: string
         }
         Insert: {
-          after_images?: string[] | null
-          before_images?: string[] | null
           created_at?: string
           created_by?: string
-          current_condition?: string | null
           deleted_at?: string | null
           description?: string | null
-          desired_features?: string | null
           dimensions?: string | null
           id?: string
-          materials_needed?: string[] | null
           modified_at?: string
           modified_by?: string
           name: string
           property_id: string
-          renovation_requirements?: string | null
-          renovation_status?: string | null
           type: string
         }
         Update: {
-          after_images?: string[] | null
-          before_images?: string[] | null
           created_at?: string
           created_by?: string
-          current_condition?: string | null
           deleted_at?: string | null
           description?: string | null
-          desired_features?: string | null
           dimensions?: string | null
           id?: string
-          materials_needed?: string[] | null
           modified_at?: string
           modified_by?: string
           name?: string
           property_id?: string
-          renovation_requirements?: string | null
-          renovation_status?: string | null
           type?: string
         }
         Relationships: [
@@ -510,6 +489,7 @@ export interface Database {
           modified_by: string
           project_id: string
           role: Database["public"]["Enums"]["user_role"]
+          status: Database["public"]["Enums"]["link_invitation_status_enum"]
           user_id: string
         }
         Insert: {
@@ -521,6 +501,7 @@ export interface Database {
           modified_by?: string
           project_id: string
           role: Database["public"]["Enums"]["user_role"]
+          status?: Database["public"]["Enums"]["link_invitation_status_enum"]
           user_id: string
         }
         Update: {
@@ -532,6 +513,7 @@ export interface Database {
           modified_by?: string
           project_id?: string
           role?: Database["public"]["Enums"]["user_role"]
+          status?: Database["public"]["Enums"]["link_invitation_status_enum"]
           user_id?: string
         }
         Relationships: [
@@ -544,7 +526,7 @@ export interface Database {
           {
             foreignKeyName: "user_project_role_link_user_id_fkey"
             columns: ["user_id"]
-            referencedRelation: "user_profile"
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
@@ -559,6 +541,7 @@ export interface Database {
           modified_by: string
           property_id: string
           role: Database["public"]["Enums"]["user_role"]
+          status: Database["public"]["Enums"]["link_invitation_status_enum"]
           user_id: string
         }
         Insert: {
@@ -570,6 +553,7 @@ export interface Database {
           modified_by?: string
           property_id: string
           role: Database["public"]["Enums"]["user_role"]
+          status?: Database["public"]["Enums"]["link_invitation_status_enum"]
           user_id: string
         }
         Update: {
@@ -581,6 +565,7 @@ export interface Database {
           modified_by?: string
           property_id?: string
           role?: Database["public"]["Enums"]["user_role"]
+          status?: Database["public"]["Enums"]["link_invitation_status_enum"]
           user_id?: string
         }
         Relationships: [
@@ -593,7 +578,7 @@ export interface Database {
           {
             foreignKeyName: "user_property_role_link_user_id_fkey"
             columns: ["user_id"]
-            referencedRelation: "user_profile"
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
@@ -623,6 +608,14 @@ export interface Database {
         }
         Returns: Database["public"]["Enums"]["user_role"]
       }
+      userhasaccesstoprogressrec: {
+        Args: {
+          user_id: string
+          update_type: Database["public"]["Enums"]["update_type"]
+          related_entity_id: string
+        }
+        Returns: boolean
+      }
       userhasprofile: {
         Args: {
           user_id: string
@@ -631,6 +624,7 @@ export interface Database {
       }
     }
     Enums: {
+      link_invitation_status_enum: "accepted" | "invited" | "declined"
       partner_type: "contractor" | "supplier"
       update_type: "project" | "task" | "area"
       user_role:
