@@ -4,7 +4,7 @@ interface Props {
   type: string;
 }
 
-export const UpdatesTab = ({ type }: Props) => {
+export const UpdatesList = ({ type }: Props) => {
   return (
     <ReferenceManyField
       label={false}

@@ -1,9 +1,10 @@
+import { RichTextInput } from "ra-input-rich-text";
 import { AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput } from "react-admin";
 
 export const TaskEdit = () => (
   <Edit>
     <SimpleForm>
-      <TextInput source="description" />
+      <RichTextInput source="description" />
       <ReferenceInput source="to_be_completed_by" reference="partner">
         <AutocompleteInput optionText="name" />
       </ReferenceInput>

@@ -1,3 +1,4 @@
+import { RichTextInput } from "ra-input-rich-text";
 import { Create, SimpleForm, TextInput } from "react-admin";
 
 import { useCreateParams } from "../../hooks";
@@ -9,7 +10,7 @@ export const TaskCreate = () => {
   return (
     <Create redirect={redirect ?? "show"}>
       <SimpleForm defaultValues={{ project_id: id }}>
-        <TextInput source="description" />
+        <RichTextInput source="description" />
         <PartnerReferenceInput source="to_be_completed_by" />
         <TextInput source="status" />
         <TextInput source="priority" />

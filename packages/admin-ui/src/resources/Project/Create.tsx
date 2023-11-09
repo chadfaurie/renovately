@@ -1,3 +1,4 @@
+import { RichTextInput } from "ra-input-rich-text";
 import { Create, DateInput, SimpleForm, TextInput, required } from "react-admin";
 
 import { useCreateParams } from "../../hooks";
@@ -12,7 +13,7 @@ export const ProjectCreate = () => {
         <TextInput source="title" validate={[required()]} />
         <PropertyReferenceInput source="property_id" validate={[required()]} />
         <TextInput source="status" validate={[required()]} />
-        <TextInput source="description" />
+        <RichTextInput source="description" />
         <DateInput source="start_date" />
         <DateInput source="estimated_end_date" />
       </SimpleForm>

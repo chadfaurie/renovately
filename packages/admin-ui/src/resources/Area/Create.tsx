@@ -1,3 +1,4 @@
+import { RichTextInput } from "ra-input-rich-text";
 import { Create, SimpleForm, TextInput, required } from "react-admin";
 
 import { useCreateParams } from "../../hooks";
@@ -12,15 +13,8 @@ export const AreaCreate = () => {
         <TextInput source="name" validate={[required()]} />
         <TextInput source="type" validate={[required()]} />
         <PropertyReferenceInput source="property_id" validate={[required()]} />
-        <TextInput source="description" />
+        <RichTextInput source="description" />
         <TextInput source="dimensions" />
-        <TextInput source="renovation_status" />
-        <TextInput source="renovation_requirements" />
-        <TextInput source="before_images" />
-        <TextInput source="after_images" />
-        <TextInput source="current_condition" />
-        <TextInput source="desired_features" />
-        <TextInput source="materials_needed" />
       </SimpleForm>
     </Create>
   );

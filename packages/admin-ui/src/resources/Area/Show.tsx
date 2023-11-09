@@ -1,6 +1,6 @@
-import { ChipField, Show, Tab, TabbedShowLayout, TextField } from "react-admin";
+import { ChipField, RichTextField, Show, Tab, TabbedShowLayout, TextField } from "react-admin";
 
-import { UpdatesTab } from "../../components/generic";
+import { UpdatesList } from "../../components/generic";
 import { PropertyReferenceField } from "../../references";
 
 export const AreaShow = () => (
@@ -10,18 +10,11 @@ export const AreaShow = () => (
         <PropertyReferenceField source="property_id" />
         <TextField source="name" />
         <ChipField source="type" />
+        <RichTextField source="description" />
         <TextField source="dimensions" />
-        <TextField source="description" />
-        <TextField source="renovation_status" />
-        <TextField source="renovation_requirements" />
-        <TextField source="before_images" />
-        <TextField source="after_images" />
-        <ChipField source="current_condition" />
-        <TextField source="desired_features" />
-        <TextField source="materials_needed" />
       </Tab>
       <Tab label="Updates">
-        <UpdatesTab type="area" />
+        <UpdatesList type="area" />
       </Tab>
     </TabbedShowLayout>
   </Show>

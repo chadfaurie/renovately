@@ -3,7 +3,6 @@ import {
   CreateButton,
   Datagrid,
   DateField,
-  DeleteWithConfirmButton,
   ReferenceManyField,
   Show,
   ShowButton,
@@ -13,8 +12,8 @@ import {
   useGetRecordId,
 } from "react-admin";
 
-import { UpdatesTab } from "../../components/generic";
-import { PartnerReferenceField, PropertyReferenceField, UserReferenceField } from "../../references";
+import { AccessList, UpdatesList } from "../../components/generic";
+import { PartnerReferenceField, PropertyReferenceField } from "../../references";
 
 export const ProjectShow = () => {
   const id = useGetRecordId();
@@ -49,16 +48,10 @@ export const ProjectShow = () => {
           </ReferenceManyField>
         </Tab>
         <Tab label="Updates">
-          <UpdatesTab type="project" />
+          <UpdatesList type="project" />
         </Tab>
         <Tab label="Access">
-          <ReferenceManyField label={false} reference="user_project_role_link" source="id" target="project_id">
-            <Datagrid bulkActionButtons={false}>
-              <UserReferenceField source="user_id" />
-              <ChipField source="role" />
-              <DeleteWithConfirmButton />
-            </Datagrid>
-          </ReferenceManyField>
+          <AccessList reference="user_project_role_link" source="id" target="project_id" id={id} />
         </Tab>
       </TabbedShowLayout>
     </Show>

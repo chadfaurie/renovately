@@ -8,12 +8,11 @@ import {
   DateField,
   ShowButton,
   ChipField,
-  DeleteWithConfirmButton,
   CreateButton,
   useGetRecordId,
 } from "react-admin";
 
-import { UserReferenceField } from "../../references";
+import { AccessList } from "../../components/generic";
 
 export const PropertyShow = () => {
   const id = useGetRecordId();
@@ -62,13 +61,7 @@ export const PropertyShow = () => {
           </ReferenceManyField>
         </Tab>
         <Tab label="Access">
-          <ReferenceManyField label={false} reference="user_property_role_link" source="id" target="property_id">
-            <Datagrid bulkActionButtons={false}>
-              <UserReferenceField source="user_id" />
-              <ChipField source="role" />
-              <DeleteWithConfirmButton />
-            </Datagrid>
-          </ReferenceManyField>
+          <AccessList id={id} reference="user_property_role_link" target="property_id" />
         </Tab>
       </TabbedShowLayout>
     </Show>

@@ -5,11 +5,11 @@ import {
   DateField,
   ImageField,
   ReferenceManyField,
+  RichTextField,
   Show,
   ShowButton,
   Tab,
   TabbedShowLayout,
-  TextField,
   useGetRecordId,
 } from "react-admin";
 
@@ -23,7 +23,7 @@ export const ProgressUpdateShow = () => {
     <Show>
       <TabbedShowLayout>
         <Tab label="Summary">
-          <TextField source="description" />
+          <RichTextField source="description" />
           <ChipField source="type" />
           <MultiLinkField source="related_entity_id" referenceField="type" relatedSource={relatedSourceMap} />
         </Tab>

@@ -1,1 +1,2 @@
-export * from "./UpdatesTab";
+export * from "./UpdatesList";
+export * from "./AccessList";
