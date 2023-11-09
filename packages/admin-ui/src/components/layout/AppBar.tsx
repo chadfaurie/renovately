@@ -19,7 +19,7 @@ const MyUserMenu = () => {
         <ListItemText>{translate("ra.auth.user", { _: "Profile" })}</ListItemText>
       </MenuItem>
       <Divider />
-      <>{authProvider ? <Logout /> : null}</>
+      {authProvider ? <Logout /> : null}
     </UserMenu>
   );
 };
