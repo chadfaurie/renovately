@@ -2,9 +2,7 @@ import { supabaseAuthProvider } from "ra-supabase";
 import { AuthProvider } from "react-admin";
 
 import { supabaseClient } from "./supabase";
-import { Database } from "../database.types";
-
-export type UserRole = Database["public"]["Enums"]["user_role"];
+import { UserRoleEnum } from "../types";
 
 export const authProvider: AuthProvider = supabaseAuthProvider(supabaseClient, {
   getIdentity: async (user) => {
@@ -22,7 +20,7 @@ export const authProvider: AuthProvider = supabaseAuthProvider(supabaseClient, {
 });
 
 authProvider.getPermissions = async () => {
-  const permissions: UserRole | undefined = localStorage.getItem("permissions") as UserRole | undefined;
+  const permissions: UserRoleEnum | undefined = localStorage.getItem("permissions") as UserRoleEnum | undefined;
 
   return permissions;
 };

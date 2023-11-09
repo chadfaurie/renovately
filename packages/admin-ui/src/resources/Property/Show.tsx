@@ -13,7 +13,7 @@ import {
   useGetRecordId,
 } from "react-admin";
 
-import { PropertyReferenceField } from "../../references";
+import { UserReferenceField } from "../../references";
 
 export const PropertyShow = () => {
   const id = useGetRecordId();
@@ -64,7 +64,7 @@ export const PropertyShow = () => {
         <Tab label="Access">
           <ReferenceManyField label={false} reference="user_property_role_link" source="id" target="property_id">
             <Datagrid bulkActionButtons={false}>
-              <PropertyReferenceField source="property_id" />
+              <UserReferenceField source="user_id" />
               <ChipField source="role" />
               <DeleteWithConfirmButton />
             </Datagrid>

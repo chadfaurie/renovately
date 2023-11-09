@@ -14,7 +14,7 @@ import {
 } from "react-admin";
 
 import { UpdatesTab } from "../../components/generic";
-import { PartnerReferenceField, ProjectReferenceField, PropertyReferenceField } from "../../references";
+import { PartnerReferenceField, PropertyReferenceField, UserReferenceField } from "../../references";
 
 export const ProjectShow = () => {
   const id = useGetRecordId();
@@ -54,7 +54,7 @@ export const ProjectShow = () => {
         <Tab label="Access">
           <ReferenceManyField label={false} reference="user_project_role_link" source="id" target="project_id">
             <Datagrid bulkActionButtons={false}>
-              <ProjectReferenceField source="project_id" />
+              <UserReferenceField source="user_id" />
               <ChipField source="role" />
               <DeleteWithConfirmButton />
             </Datagrid>

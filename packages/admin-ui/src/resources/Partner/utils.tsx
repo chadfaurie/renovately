@@ -1,11 +1,9 @@
 import { SelectInput } from "react-admin";
 
-import { Database } from "../../database.types";
+import { PartnerTypeEnum } from "../../types";
 import { Choices } from "../../utils";
 
-type PartnerType = Database["public"]["Enums"]["partner_type"];
-
-const choices: Choices<PartnerType> = [
+const choices: Choices<PartnerTypeEnum> = [
   { id: "contractor", name: "Contractor" },
   { id: "supplier", name: "Supplier" },
 ];

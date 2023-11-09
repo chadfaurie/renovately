@@ -1,5 +1,7 @@
 import { ComponentProps } from "react";
-import { ReferenceField, TextField } from "react-admin";
+import { FunctionField, ReferenceField, TextField } from "react-admin";
+
+import { UserProfile } from "../types";
 
 export type RefFieldProps = Partial<ComponentProps<typeof ReferenceField>> & {
   source: string;
@@ -33,6 +35,14 @@ export const ProgressUpdateReferenceField = (props: RefFieldProps) => {
   return (
     <ReferenceField reference="progress" link="show" {...props}>
       <TextField source="description" />
+    </ReferenceField>
+  );
+};
+
+export const UserReferenceField = (props: RefFieldProps) => {
+  return (
+    <ReferenceField reference="user_profile" link={false} {...props}>
+      <FunctionField render={(record: UserProfile) => `${record.first_name} ${record.last_name}`} />
     </ReferenceField>
   );
 };

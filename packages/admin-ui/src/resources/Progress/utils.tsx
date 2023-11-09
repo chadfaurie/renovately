@@ -1,12 +1,10 @@
 import { ComponentProps } from "react";
 import { SelectInput } from "react-admin";
 
-import { Database } from "../../database.types";
+import { UpdateTypeEnum } from "../../types";
 import { Choices } from "../../utils";
 
-type UpdateType = Database["public"]["Enums"]["update_type"];
-
-const choices: Choices<UpdateType> = [
+const choices: Choices<UpdateTypeEnum> = [
   { id: "project", name: "Project" },
   { id: "area", name: "Area" },
   { id: "task", name: "Task" },
@@ -18,7 +16,7 @@ export const UpdateTypeSelect = ({ ...props }: Props) => {
   return <SelectInput source="type" choices={choices} {...props} />;
 };
 
-export const relatedSourceMap: Record<UpdateType, string> = {
+export const relatedSourceMap: Record<UpdateTypeEnum, string> = {
   project: "title",
   area: "name",
   task: "description",
