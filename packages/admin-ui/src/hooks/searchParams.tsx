@@ -1,5 +1,6 @@
 import { parse } from "query-string";
 import { useMemo } from "react";
+import { CreatePathType } from "react-admin";
 import { useLocation } from "react-router-dom";
 
 export const useCreateParams = () => {
@@ -14,6 +15,22 @@ export const useCreateParams = () => {
   return params;
 };
 
+export const useBuildRedirect = (
+  parentEntity: string | (string | null)[] | null,
+  id: string | (string | null)[] | null,
+  defaultRedirect: CreatePathType = "show",
+) => {
+  const redirect = useMemo(() => {
+    if (parentEntity && id) {
+      return `/${parentEntity}/${id}/show/1`;
+    }
+
+    return defaultRedirect;
+  }, [parentEntity, id, defaultRedirect]);
+
+  return redirect;
+};
+
 export const useCreateParamsField = (field: string, parentEntity: string) => {
   const location = useLocation();
 
@@ -25,7 +42,7 @@ export const useCreateParamsField = (field: string, parentEntity: string) => {
     return id as string;
   }, [field, location.search]);
 
-  const redirect = useMemo(() => `/${parentEntity}/${id}/show/1`, [parentEntity, id]);
+  const redirect = useBuildRedirect(parentEntity, id);
 
   return { id, redirect };
 };
