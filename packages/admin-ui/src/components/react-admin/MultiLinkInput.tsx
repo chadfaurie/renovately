@@ -19,20 +19,8 @@ export const MultiLinkInput = <T extends string = string>({
   ...rest
 }: MultiLinkInputProps<T>) => {
   const entity = useWatch({
-    // control,
-    name: referenceField, // without supply name will watch the entire form, or ['firstName', 'lastName'] to watch both
-    // defaultValue: "default", // default value before the render
+    name: referenceField,
   });
-
-  console.log("entity", entity);
-
-  //   const watchShowAge = watch("showAge", false);
-
-  //   const entity = useMemo((): string => {
-  //     const q = record?.[referenceField];
-
-  //     return q;
-  //   }, [record, referenceField]);
 
   const relatedEntitySource = useMemo(() => {
     if (typeof relatedSource === "string") {

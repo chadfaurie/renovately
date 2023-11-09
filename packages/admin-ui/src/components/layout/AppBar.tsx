@@ -1,5 +1,4 @@
 import ProfileIcon from "@mui/icons-material/Person2Outlined";
-import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
@@ -28,12 +27,10 @@ const MyAppBar = (props: AppBarProps) => {
   return (
     <AppBar {...props} userMenu={<MyUserMenu />}>
       <TitlePortal />
-      <Box flex="1" />
 
-      <Typography variant="h6" id="react-admin-title">
-        Renovately
+      <Typography variant="h6" id="react-admin-title" flex="1">
+        Renovately Admin
       </Typography>
-      <Box flex="1" />
     </AppBar>
   );
 };
