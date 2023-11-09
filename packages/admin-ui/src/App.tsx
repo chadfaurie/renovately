@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Loading } from "react-admin";
+import "./monitors";
 
 const MyAdmin = lazy(() => import("./Admin"));
 
