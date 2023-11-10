@@ -2,7 +2,11 @@
   "folders": [
     {
       "name": "project-root",
-      "path": "./"
+      "path": "."
+    },
+    {
+      "name": "supabase",
+      "path": "supabase"
     },
     {
       "name": "supabase-functions",

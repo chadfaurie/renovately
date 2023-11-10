@@ -8,6 +8,7 @@ export const useUserHasProfile = () => {
     error,
   } = useGetIdentity({
     retry: false,
+    keepPreviousData: true,
   });
 
   const hasProfile = useMemo(() => {

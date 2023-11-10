@@ -43,7 +43,7 @@ function AsyncResources() {
   const { hasProfile, isLoading, error } = useUserHasProfile();
   const { authenticated } = useAuthState();
 
-  if (isLoading) {
+  if (!error && isLoading) {
     return <FullLoading />;
   }
 

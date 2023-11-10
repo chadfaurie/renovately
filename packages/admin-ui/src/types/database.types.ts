@@ -678,6 +678,13 @@ export interface Database {
       }
     }
     Functions: {
+      accept_invitation: {
+        Args: {
+          invitation_id: string
+          accepting_user_id: string
+        }
+        Returns: string
+      }
       getuserisadmin: {
         Args: {
           user_id: string
