@@ -18,6 +18,7 @@ import MyProfile from "../pages/MyProfile";
 import Test from "../pages/Test";
 import NewUserProfile from "../pages/UserProfile";
 import { AreaCreate, AreaEdit, AreaList, AreaShow } from "../resources/Area";
+import { InvitationCreate, InvitationList, InvitationShow } from "../resources/Invitation";
 import { PartnerCreate, PartnerEdit, PartnerList, PartnerShow } from "../resources/Partner";
 import {
   ProgressUpdateCreate,
@@ -102,9 +103,14 @@ function AsyncResources() {
       />
       <Resource name="progress_update_images" show={ProgressUpdateImageShow} create={ProgressUpdateImageCreate} />
 
+      <Resource name="invite_view" list={InvitationList} show={InvitationShow} create={InvitationCreate} />
+
       {permissions === "admin" && (
         <Resource
           name="user_profile"
+          options={{
+            label: "Invitation",
+          }}
           icon={UserIcon}
           list={UserProfileList}
           show={UserProfileShow}

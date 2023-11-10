@@ -43,6 +43,14 @@ const englishMessages: RecursivePartial<TranslationMessages> = {
         // color: "Color",
       },
     },
+    invite_view: {
+      name: "Invitation |||| Invitations",
+      fields: {
+        // model: "Model",
+        // stock: "Nb in stock",
+        // color: "Color",
+      },
+    },
   },
   // custom components
   acme: {

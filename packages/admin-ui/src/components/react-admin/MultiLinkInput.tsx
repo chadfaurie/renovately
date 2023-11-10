@@ -1,4 +1,3 @@
-import { Typography } from "@mui/material";
 import { ReactElement, useMemo } from "react";
 import { ReferenceInput, InputProps, UseReferenceInputControllerParams, AutocompleteInput } from "react-admin";
 import { useWatch } from "react-hook-form";
@@ -31,13 +30,20 @@ export const MultiLinkInput = <T extends string = string>({
     return relatedSource[entity as T];
   }, [relatedSource, entity]);
 
-  if (!entity) {
-    return <Typography>Related Field Requires Selection</Typography>;
-  }
+  // if (!entity) {
+  //   return <AutocompleteInput disabled helperText={"Related Field Requires Selection"} choices={[]} />;
+  // }
 
   return (
-    <ReferenceInput {...rest} reference={entity}>
-      <AutocompleteInput optionText={relatedEntitySource} validate={validate} />
+    <ReferenceInput {...rest} reference={entity ?? ""} disabled={!entity}>
+      <AutocompleteInput
+        optionText={relatedEntitySource}
+        validate={validate}
+        disabled={!entity}
+        helperText={!entity ? "Related Field Requires Selection" : ""}
+        // error={!entity}
+        // InputPro
+      />
     </ReferenceInput>
   );
 };

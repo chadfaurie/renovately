@@ -123,6 +123,67 @@ export interface Database {
           }
         ]
       }
+      invitation: {
+        Row: {
+          accepted_at: string | null
+          created_at: string
+          created_by: string
+          deleted_at: string | null
+          email: string | null
+          entity_id: string
+          expires_at: string
+          id: string
+          modified_at: string
+          modified_by: string
+          role: Database["public"]["Enums"]["user_role"]
+          token: string
+          type: Database["public"]["Enums"]["invite_type_enum"]
+        }
+        Insert: {
+          accepted_at?: string | null
+          created_at?: string
+          created_by?: string
+          deleted_at?: string | null
+          email?: string | null
+          entity_id: string
+          expires_at?: string
+          id?: string
+          modified_at?: string
+          modified_by?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          token?: string
+          type: Database["public"]["Enums"]["invite_type_enum"]
+        }
+        Update: {
+          accepted_at?: string | null
+          created_at?: string
+          created_by?: string
+          deleted_at?: string | null
+          email?: string | null
+          entity_id?: string
+          expires_at?: string
+          id?: string
+          modified_at?: string
+          modified_by?: string
+          role?: Database["public"]["Enums"]["user_role"]
+          token?: string
+          type?: Database["public"]["Enums"]["invite_type_enum"]
+        }
+        Relationships: [
+          {
+            foreignKeyName: "invitation_created_by_fkey"
+            columns: ["created_by"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "invitation_modified_by_fkey"
+            columns: ["modified_by"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       partner: {
         Row: {
           created_at: string
@@ -585,7 +646,36 @@ export interface Database {
       }
     }
     Views: {
-      [_ in never]: never
+      invite_view: {
+        Row: {
+          accepted_at: string | null
+          email: string | null
+          entity_id: string | null
+          expires_at: string | null
+          id: string | null
+          role: Database["public"]["Enums"]["user_role"] | null
+          type: Database["public"]["Enums"]["invite_type_enum"] | null
+        }
+        Insert: {
+          accepted_at?: string | null
+          email?: string | null
+          entity_id?: string | null
+          expires_at?: string | null
+          id?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
+          type?: Database["public"]["Enums"]["invite_type_enum"] | null
+        }
+        Update: {
+          accepted_at?: string | null
+          email?: string | null
+          entity_id?: string | null
+          expires_at?: string | null
+          id?: string | null
+          role?: Database["public"]["Enums"]["user_role"] | null
+          type?: Database["public"]["Enums"]["invite_type_enum"] | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       getuserisadmin: {
@@ -608,6 +698,21 @@ export interface Database {
         }
         Returns: Database["public"]["Enums"]["user_role"]
       }
+      nanoid: {
+        Args: {
+          size?: number
+          alphabet?: string
+        }
+        Returns: string
+      }
+      userhasaccesstoinvite: {
+        Args: {
+          user_id: string
+          invite_type: Database["public"]["Enums"]["invite_type_enum"]
+          entity_id: string
+        }
+        Returns: boolean
+      }
       userhasaccesstoprogressrec: {
         Args: {
           user_id: string
@@ -624,6 +729,7 @@ export interface Database {
       }
     }
     Enums: {
+      invite_type_enum: "project" | "property"
       link_invitation_status_enum: "accepted" | "invited" | "declined"
       partner_type: "contractor" | "supplier"
       update_type: "project" | "task" | "area"
