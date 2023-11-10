@@ -1,15 +1,12 @@
 import { SelectInput } from "react-admin";
 
-export const PartnerTypeSelect = () => {
-  return (
-    <SelectInput
-      source="partner_type"
-      choices={[
-        { id: "CONTRACTOR", name: "Contractor" },
-        { id: "SUPPLIER", name: "Supplier" },
-      ]}
-    />
-  );
-};
+import { Choices, SelectInputProps } from "../../utils";
 
-export default PartnerTypeSelect;
+const taskStatusChoices: Choices = [
+  { id: "complete", name: "Complete" },
+  { id: "pending", name: "Pending" },
+];
+
+export const TaskStatusSelectInput = (props: SelectInputProps) => {
+  return <SelectInput source="status" choices={taskStatusChoices} {...props} />;
+};
