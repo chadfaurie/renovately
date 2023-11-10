@@ -1,6 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import { ChipField, Datagrid, List, ShowButton, TextField, Title } from "react-admin";
 
+import { TaskComplete } from "../components/react-admin";
 import { ProjectReferenceField } from "../references";
 
 const Dashboard = () => {
@@ -23,11 +24,12 @@ const Dashboard = () => {
           <Typography variant="h6">Tasks</Typography>
 
           <List resource="task" actions={false}>
-            <Datagrid rowClick="show" bulkActionButtons={false}>
+            <Datagrid bulkActionButtons={false}>
               <TextField source="description" />
 
               <ChipField source="status" />
               <ProjectReferenceField source="project_id" />
+              <TaskComplete />
               <ShowButton />
             </Datagrid>
           </List>

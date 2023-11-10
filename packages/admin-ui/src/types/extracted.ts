@@ -1,3 +1,5 @@
+import { Identifier } from "react-admin";
+
 import { Database } from ".";
 
 export type UserRoleEnum = Database["public"]["Enums"]["user_role"];
@@ -8,3 +10,4 @@ export type InvitationTypeEnum = Database["public"]["Enums"]["invite_type_enum"]
 
 export type UserProfile = Database["public"]["Tables"]["user_profile"]["Insert"];
 export type Invitation = Database["public"]["Views"]["invite_view"]["Insert"];
+export type Task = Database["public"]["Tables"]["task"]["Insert"] & { id: Identifier };
